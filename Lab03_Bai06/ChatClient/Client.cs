@@ -24,7 +24,7 @@ namespace ChatClient
             if (string.IsNullOrWhiteSpace(text)) return;
 
             string msg = $"{userName}|{recipient}|{text}";
-            byte[] buffer = Encoding.UTF8.GetBytes(msg + "\n"); // add line terminator
+            byte[] buffer = Encoding.UTF8.GetBytes(msg + "\n");
             stream.Write(buffer, 0, buffer.Length);
 
             richTextBox_Message.AppendText($"Me: {text}{Environment.NewLine}");
@@ -45,7 +45,7 @@ namespace ChatClient
                 byte[] buffer = Encoding.UTF8.GetBytes(intro + "\n");
                 stream.Write(buffer, 0, buffer.Length);
 
-                // Hiển thị trạng thái kết nối
+                // Hiển thị trạng thái đã kết nối
                 richTextBox_Message.AppendText("Connected to server." + Environment.NewLine);
 
                 // Bắt đầu nhận tin nhắn
@@ -98,7 +98,6 @@ namespace ChatClient
                 }));
             }
         }
-
 
         private void Client_Load(object sender, EventArgs e)
         {

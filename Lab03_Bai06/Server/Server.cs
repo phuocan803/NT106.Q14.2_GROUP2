@@ -26,11 +26,6 @@ namespace Server
             listenThread = new Thread(ListenForClients);
             listenThread.Start();
         }
-
-        //private void listView_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-
-        //}
         private void ListenForClients()
         {
             while (true)
@@ -109,7 +104,7 @@ namespace Server
 
         private void BroadcastMessage(string message)
         {
-            byte[] buffer = Encoding.UTF8.GetBytes(message + "\n"); // ensure newline
+            byte[] buffer = Encoding.UTF8.GetBytes(message + "\n"); 
             foreach (var client in clients.Values)
             {
                 try
