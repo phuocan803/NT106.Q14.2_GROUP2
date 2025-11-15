@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "Lab03_Bai04_Server\\Lab03_Bai04_Server.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Lab03_Bai04\\Lab03_Bai04_Client.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\Lab03_Bai04_Server\obj\Debug\Lab03_Bai04_Server.csproj.AssemblyReference.cache
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\Lab03_Bai04_Server\obj\Debug\Lab03_Bai04_Server.Server.resources
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\Lab03_Bai04_Server\obj\Debug\Lab03_Bai04_Server.Properties.Resources.resources
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\Lab03_Bai04_Server\obj\Debug\Lab03_Bai04_Server.csproj.GenerateResource.cache
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\Lab03_Bai04_Server\obj\Debug\Lab03_Bai04_Server.csproj.CoreCompileInputs.cache
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\Lab03_Bai04_Server\bin\Debug\Lab03_Bai04_Server.exe.config
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\Lab03_Bai04_Server\bin\Debug\Lab03_Bai04_Server.exe
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\Lab03_Bai04_Server\bin\Debug\Lab03_Bai04_Server.pdb
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\Lab03_Bai04_Server\obj\Debug\Lab03_Bai04_Server.exe
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\Lab03_Bai04_Server\obj\Debug\Lab03_Bai04_Server.pdb
