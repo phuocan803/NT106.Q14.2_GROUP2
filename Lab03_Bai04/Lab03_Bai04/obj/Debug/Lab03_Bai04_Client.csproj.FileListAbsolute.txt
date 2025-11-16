@@ -8,3 +8,13 @@ D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\La
 D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\Lab03_Bai04\bin\Debug\Lab03_Bai04.exe.config
 D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\Lab03_Bai04\bin\Debug\Lab03_Bai04.exe
 D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\Lab03_Bai04\Lab03_Bai04\bin\Debug\Lab03_Bai04.pdb
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\NT106.Q14.2_GROUP2\Lab03_Bai04\Lab03_Bai04\bin\Debug\Lab03_Bai04.exe.config
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\NT106.Q14.2_GROUP2\Lab03_Bai04\Lab03_Bai04\bin\Debug\Lab03_Bai04.exe
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\NT106.Q14.2_GROUP2\Lab03_Bai04\Lab03_Bai04\bin\Debug\Lab03_Bai04.pdb
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\NT106.Q14.2_GROUP2\Lab03_Bai04\Lab03_Bai04\obj\Debug\Lab03_Bai04_Client.csproj.AssemblyReference.cache
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\NT106.Q14.2_GROUP2\Lab03_Bai04\Lab03_Bai04\obj\Debug\Lab03_Bai04.Client.resources
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\NT106.Q14.2_GROUP2\Lab03_Bai04\Lab03_Bai04\obj\Debug\Lab03_Bai04.Properties.Resources.resources
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\NT106.Q14.2_GROUP2\Lab03_Bai04\Lab03_Bai04\obj\Debug\Lab03_Bai04_Client.csproj.GenerateResource.cache
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\NT106.Q14.2_GROUP2\Lab03_Bai04\Lab03_Bai04\obj\Debug\Lab03_Bai04_Client.csproj.CoreCompileInputs.cache
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\NT106.Q14.2_GROUP2\Lab03_Bai04\Lab03_Bai04\obj\Debug\Lab03_Bai04.exe
+D:\Studying\Hoc Ky 3\NT106 - Network Programing\Lab\Projects\Lab3\NT106.Q14.2_GROUP2\Lab03_Bai04\Lab03_Bai04\obj\Debug\Lab03_Bai04.pdb

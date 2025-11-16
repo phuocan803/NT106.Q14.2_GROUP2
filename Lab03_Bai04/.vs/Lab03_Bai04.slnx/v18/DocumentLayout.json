@@ -1,22 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\Lab03_Bai04\\",
+  "WorkspaceRootPath": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\NT106.Q14.2_GROUP2\\Lab03_Bai04\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1BE0DE59-6903-45D5-8BE5-1CE89E3A6F40}|Lab03_Bai04\\Lab03_Bai04_Client.csproj|d:\\studying\\hoc ky 3\\nt106 - network programing\\lab\\projects\\lab3\\lab03_bai04\\lab03_bai04\\client\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1BE0DE59-6903-45D5-8BE5-1CE89E3A6F40}|Lab03_Bai04\\Lab03_Bai04_Client.csproj|solutionrelative:lab03_bai04\\client\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C2ECCDFA-E021-46CE-8059-391D5C011059}|Lab03_Bai04_Server\\Lab03_Bai04_Server.csproj|D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\Lab03_Bai04\\lab03_bai04_server\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C2ECCDFA-E021-46CE-8059-391D5C011059}|Lab03_Bai04_Server\\Lab03_Bai04_Server.csproj|D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\NT106.Q14.2_GROUP2\\Lab03_Bai04\\lab03_bai04_server\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C2ECCDFA-E021-46CE-8059-391D5C011059}|Lab03_Bai04_Server\\Lab03_Bai04_Server.csproj|solutionrelative:lab03_bai04_server\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2ECCDFA-E021-46CE-8059-391D5C011059}|Lab03_Bai04_Server\\Lab03_Bai04_Server.csproj|D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\Lab03_Bai04\\lab03_bai04_server\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C2ECCDFA-E021-46CE-8059-391D5C011059}|Lab03_Bai04_Server\\Lab03_Bai04_Server.csproj|D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\NT106.Q14.2_GROUP2\\Lab03_Bai04\\lab03_bai04_server\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C2ECCDFA-E021-46CE-8059-391D5C011059}|Lab03_Bai04_Server\\Lab03_Bai04_Server.csproj|solutionrelative:lab03_bai04_server\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1BE0DE59-6903-45D5-8BE5-1CE89E3A6F40}|Lab03_Bai04\\Lab03_Bai04_Client.csproj|D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\Lab03_Bai04\\lab03_bai04\\client\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1BE0DE59-6903-45D5-8BE5-1CE89E3A6F40}|Lab03_Bai04\\Lab03_Bai04_Client.csproj|D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\NT106.Q14.2_GROUP2\\Lab03_Bai04\\lab03_bai04\\client\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1BE0DE59-6903-45D5-8BE5-1CE89E3A6F40}|Lab03_Bai04\\Lab03_Bai04_Client.csproj|solutionrelative:lab03_bai04\\client\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BE0DE59-6903-45D5-8BE5-1CE89E3A6F40}|Lab03_Bai04\\Lab03_Bai04_Client.csproj|d:\\studying\\hoc ky 3\\nt106 - network programing\\lab\\projects\\lab3\\nt106.q14.2_group2\\lab03_bai04\\lab03_bai04\\client\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BE0DE59-6903-45D5-8BE5-1CE89E3A6F40}|Lab03_Bai04\\Lab03_Bai04_Client.csproj|solutionrelative:lab03_bai04\\client\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,19 +26,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Client.cs",
-              "DocumentMoniker": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\Lab03_Bai04\\Lab03_Bai04\\Client\\Client.cs",
+              "DocumentMoniker": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\NT106.Q14.2_GROUP2\\Lab03_Bai04\\Lab03_Bai04\\Client\\Client.cs",
               "RelativeDocumentMoniker": "Lab03_Bai04\\Client\\Client.cs",
-              "ToolTip": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\Lab03_Bai04\\Lab03_Bai04\\Client\\Client.cs",
+              "ToolTip": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\NT106.Q14.2_GROUP2\\Lab03_Bai04\\Lab03_Bai04\\Client\\Client.cs",
               "RelativeToolTip": "Lab03_Bai04\\Client\\Client.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANoAAAAAAAAAAAAAwMYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-15T16:09:11.704Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Server.cs",
+              "DocumentMoniker": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\NT106.Q14.2_GROUP2\\Lab03_Bai04\\Lab03_Bai04_Server\\Server\\Server.cs",
+              "RelativeDocumentMoniker": "Lab03_Bai04_Server\\Server\\Server.cs",
+              "ToolTip": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\NT106.Q14.2_GROUP2\\Lab03_Bai04\\Lab03_Bai04_Server\\Server\\Server.cs",
+              "RelativeToolTip": "Lab03_Bai04_Server\\Server\\Server.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAlwEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T16:00:59.755Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
@@ -56,37 +70,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Client.cs [Design]",
-              "DocumentMoniker": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\Lab03_Bai04\\Lab03_Bai04\\Client\\Client.cs",
-              "RelativeDocumentMoniker": "Lab03_Bai04\\Client\\Client.cs",
-              "ToolTip": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\Lab03_Bai04\\Lab03_Bai04\\Client\\Client.cs [Design]",
-              "RelativeToolTip": "Lab03_Bai04\\Client\\Client.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T16:09:08.489Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Server.cs",
-              "DocumentMoniker": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\Lab03_Bai04\\Lab03_Bai04_Server\\Server\\Server.cs",
+              "Title": "Server.cs [Design]",
+              "DocumentMoniker": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\NT106.Q14.2_GROUP2\\Lab03_Bai04\\Lab03_Bai04_Server\\Server\\Server.cs",
               "RelativeDocumentMoniker": "Lab03_Bai04_Server\\Server\\Server.cs",
-              "ToolTip": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\Lab03_Bai04\\Lab03_Bai04_Server\\Server\\Server.cs",
-              "RelativeToolTip": "Lab03_Bai04_Server\\Server\\Server.cs",
-              "ViewState": "AgIAAIQAAAAAAAAAAAAwwJYAAAApAAAAAAAAAA==",
+              "ToolTip": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\NT106.Q14.2_GROUP2\\Lab03_Bai04\\Lab03_Bai04_Server\\Server\\Server.cs [Design]",
+              "RelativeToolTip": "Lab03_Bai04_Server\\Server\\Server.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T16:00:59.755Z"
+              "WhenOpened": "2025-11-15T16:00:56.033Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Server.cs [Design]",
-              "DocumentMoniker": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\Lab03_Bai04\\Lab03_Bai04_Server\\Server\\Server.cs",
-              "RelativeDocumentMoniker": "Lab03_Bai04_Server\\Server\\Server.cs",
-              "ToolTip": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\Lab03_Bai04\\Lab03_Bai04_Server\\Server\\Server.cs [Design]",
-              "RelativeToolTip": "Lab03_Bai04_Server\\Server\\Server.cs [Design]",
+              "Title": "Client.cs [Design]",
+              "DocumentMoniker": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\NT106.Q14.2_GROUP2\\Lab03_Bai04\\Lab03_Bai04\\Client\\Client.cs",
+              "RelativeDocumentMoniker": "Lab03_Bai04\\Client\\Client.cs",
+              "ToolTip": "D:\\Studying\\Hoc Ky 3\\NT106 - Network Programing\\Lab\\Projects\\Lab3\\NT106.Q14.2_GROUP2\\Lab03_Bai04\\Lab03_Bai04\\Client\\Client.cs [Design]",
+              "RelativeToolTip": "Lab03_Bai04\\Client\\Client.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T16:00:56.033Z"
+              "WhenOpened": "2025-11-15T16:09:08.489Z",
+              "EditorCaption": " [Design]"
             }
           ]
         },

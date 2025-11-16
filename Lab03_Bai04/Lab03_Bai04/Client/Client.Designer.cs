@@ -34,17 +34,17 @@
             this.textBox_FullName = new System.Windows.Forms.TextBox();
             this.comboBox_MovieName = new System.Windows.Forms.ComboBox();
             this.comboBox_Room = new System.Windows.Forms.ComboBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBox_Seat = new System.Windows.Forms.CheckedListBox();
             this.label_Seat = new System.Windows.Forms.Label();
             this.groupBox_BuyTicket = new System.Windows.Forms.GroupBox();
-            this.textBox_Port = new System.Windows.Forms.TextBox();
-            this.label_Port = new System.Windows.Forms.Label();
-            this.textBox_IP_Remote_Host = new System.Windows.Forms.TextBox();
-            this.label_IP_Remote_Host = new System.Windows.Forms.Label();
             this.button_Buy = new System.Windows.Forms.Button();
             this.button_Exit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label_Layout = new System.Windows.Forms.Label();
+            this.textBox_Port = new System.Windows.Forms.TextBox();
+            this.label_Port = new System.Windows.Forms.Label();
+            this.textBox_IP_Remote_Host = new System.Windows.Forms.TextBox();
+            this.label_IP_Remote_Host = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -52,8 +52,8 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.groupBox_Connect = new System.Windows.Forms.GroupBox();
-            this.button_Connect = new System.Windows.Forms.Button();
             this.button_Disconnect = new System.Windows.Forms.Button();
+            this.button_Connect = new System.Windows.Forms.Button();
             this.groupBox_BuyTicket.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -106,6 +106,11 @@
             // 
             this.comboBox_MovieName.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_MovieName.FormattingEnabled = true;
+            this.comboBox_MovieName.Items.AddRange(new object[] {
+            "Đào, phở và piano",
+            "Mai",
+            "Gặp lại chị bầu",
+            "Tarot"});
             this.comboBox_MovieName.Location = new System.Drawing.Point(141, 57);
             this.comboBox_MovieName.Name = "comboBox_MovieName";
             this.comboBox_MovieName.Size = new System.Drawing.Size(238, 26);
@@ -117,25 +122,25 @@
             this.comboBox_Room.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_Room.FormattingEnabled = true;
             this.comboBox_Room.Items.AddRange(new object[] {
-            "Phòng 1",
-            "Phòng 2",
-            "Phòng 3"});
+            "1",
+            "2",
+            "3"});
             this.comboBox_Room.Location = new System.Drawing.Point(141, 89);
             this.comboBox_Room.Name = "comboBox_Room";
             this.comboBox_Room.Size = new System.Drawing.Size(238, 26);
             this.comboBox_Room.TabIndex = 5;
             this.comboBox_Room.SelectedIndexChanged += new System.EventHandler(this.comboBox_Room_SelectedIndexChanged);
             // 
-            // checkedListBox1
+            // checkedListBox_Seat
             // 
-            this.checkedListBox1.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
+            this.checkedListBox_Seat.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkedListBox_Seat.FormattingEnabled = true;
+            this.checkedListBox_Seat.Items.AddRange(new object[] {
             " "});
-            this.checkedListBox1.Location = new System.Drawing.Point(5, 156);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(143, 109);
-            this.checkedListBox1.TabIndex = 6;
+            this.checkedListBox_Seat.Location = new System.Drawing.Point(5, 156);
+            this.checkedListBox_Seat.Name = "checkedListBox_Seat";
+            this.checkedListBox_Seat.Size = new System.Drawing.Size(143, 109);
+            this.checkedListBox_Seat.TabIndex = 6;
             // 
             // label_Seat
             // 
@@ -156,7 +161,7 @@
             this.groupBox_BuyTicket.Controls.Add(this.button_Exit);
             this.groupBox_BuyTicket.Controls.Add(this.label1);
             this.groupBox_BuyTicket.Controls.Add(this.label_Layout);
-            this.groupBox_BuyTicket.Controls.Add(this.checkedListBox1);
+            this.groupBox_BuyTicket.Controls.Add(this.checkedListBox_Seat);
             this.groupBox_BuyTicket.Controls.Add(this.label_Seat);
             this.groupBox_BuyTicket.Controls.Add(this.label_FullName);
             this.groupBox_BuyTicket.Controls.Add(this.label_MovieName);
@@ -168,42 +173,6 @@
             this.groupBox_BuyTicket.TabIndex = 8;
             this.groupBox_BuyTicket.TabStop = false;
             this.groupBox_BuyTicket.Text = "Đặt vé";
-            // 
-            // textBox_Port
-            // 
-            this.textBox_Port.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Port.Location = new System.Drawing.Point(115, 51);
-            this.textBox_Port.Name = "textBox_Port";
-            this.textBox_Port.Size = new System.Drawing.Size(166, 26);
-            this.textBox_Port.TabIndex = 14;
-            // 
-            // label_Port
-            // 
-            this.label_Port.AutoSize = true;
-            this.label_Port.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Port.Location = new System.Drawing.Point(8, 54);
-            this.label_Port.Name = "label_Port";
-            this.label_Port.Size = new System.Drawing.Size(34, 18);
-            this.label_Port.TabIndex = 13;
-            this.label_Port.Text = "Port";
-            // 
-            // textBox_IP_Remote_Host
-            // 
-            this.textBox_IP_Remote_Host.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_IP_Remote_Host.Location = new System.Drawing.Point(115, 19);
-            this.textBox_IP_Remote_Host.Name = "textBox_IP_Remote_Host";
-            this.textBox_IP_Remote_Host.Size = new System.Drawing.Size(166, 26);
-            this.textBox_IP_Remote_Host.TabIndex = 12;
-            // 
-            // label_IP_Remote_Host
-            // 
-            this.label_IP_Remote_Host.AutoSize = true;
-            this.label_IP_Remote_Host.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_IP_Remote_Host.Location = new System.Drawing.Point(6, 22);
-            this.label_IP_Remote_Host.Name = "label_IP_Remote_Host";
-            this.label_IP_Remote_Host.Size = new System.Drawing.Size(103, 18);
-            this.label_IP_Remote_Host.TabIndex = 11;
-            this.label_IP_Remote_Host.Text = "IP Remote Host";
             // 
             // button_Buy
             // 
@@ -246,6 +215,42 @@
             this.label_Layout.TabIndex = 8;
             this.label_Layout.Text = "         MÀN HÌNH\r\n\r\nA1    A2    A3    A4    A5\r\nB1    B2    B3    B4    B5\r\nC1  " +
     "  C2    C3    C4    C5\r\n\r\n          MÁY CHIẾU\r\n";
+            // 
+            // textBox_Port
+            // 
+            this.textBox_Port.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Port.Location = new System.Drawing.Point(115, 51);
+            this.textBox_Port.Name = "textBox_Port";
+            this.textBox_Port.Size = new System.Drawing.Size(166, 26);
+            this.textBox_Port.TabIndex = 14;
+            // 
+            // label_Port
+            // 
+            this.label_Port.AutoSize = true;
+            this.label_Port.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Port.Location = new System.Drawing.Point(8, 54);
+            this.label_Port.Name = "label_Port";
+            this.label_Port.Size = new System.Drawing.Size(34, 18);
+            this.label_Port.TabIndex = 13;
+            this.label_Port.Text = "Port";
+            // 
+            // textBox_IP_Remote_Host
+            // 
+            this.textBox_IP_Remote_Host.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_IP_Remote_Host.Location = new System.Drawing.Point(115, 19);
+            this.textBox_IP_Remote_Host.Name = "textBox_IP_Remote_Host";
+            this.textBox_IP_Remote_Host.Size = new System.Drawing.Size(166, 26);
+            this.textBox_IP_Remote_Host.TabIndex = 12;
+            // 
+            // label_IP_Remote_Host
+            // 
+            this.label_IP_Remote_Host.AutoSize = true;
+            this.label_IP_Remote_Host.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_IP_Remote_Host.Location = new System.Drawing.Point(6, 22);
+            this.label_IP_Remote_Host.Name = "label_IP_Remote_Host";
+            this.label_IP_Remote_Host.Size = new System.Drawing.Size(103, 18);
+            this.label_IP_Remote_Host.TabIndex = 11;
+            this.label_IP_Remote_Host.Text = "IP Remote Host";
             // 
             // groupBox1
             // 
@@ -330,16 +335,6 @@
             this.groupBox_Connect.TabStop = false;
             this.groupBox_Connect.Text = "Kết nối";
             // 
-            // button_Connect
-            // 
-            this.button_Connect.Location = new System.Drawing.Point(283, 19);
-            this.button_Connect.Name = "button_Connect";
-            this.button_Connect.Size = new System.Drawing.Size(90, 26);
-            this.button_Connect.TabIndex = 11;
-            this.button_Connect.Text = "Kết nối";
-            this.button_Connect.UseVisualStyleBackColor = true;
-            this.button_Connect.Click += new System.EventHandler(this.button_Connect_Click);
-            // 
             // button_Disconnect
             // 
             this.button_Disconnect.Location = new System.Drawing.Point(283, 50);
@@ -349,6 +344,16 @@
             this.button_Disconnect.Text = "Ngắt";
             this.button_Disconnect.UseVisualStyleBackColor = true;
             this.button_Disconnect.Click += new System.EventHandler(this.button_Disconnect_Click);
+            // 
+            // button_Connect
+            // 
+            this.button_Connect.Location = new System.Drawing.Point(283, 19);
+            this.button_Connect.Name = "button_Connect";
+            this.button_Connect.Size = new System.Drawing.Size(90, 26);
+            this.button_Connect.TabIndex = 11;
+            this.button_Connect.Text = "Kết nối";
+            this.button_Connect.UseVisualStyleBackColor = true;
+            this.button_Connect.Click += new System.EventHandler(this.button_Connect_Click);
             // 
             // Client
             // 
@@ -382,7 +387,7 @@
         private System.Windows.Forms.TextBox textBox_FullName;
         private System.Windows.Forms.ComboBox comboBox_MovieName;
         private System.Windows.Forms.ComboBox comboBox_Room;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox checkedListBox_Seat;
         private System.Windows.Forms.Label label_Seat;
         private System.Windows.Forms.GroupBox groupBox_BuyTicket;
         private System.Windows.Forms.Label label_Layout;

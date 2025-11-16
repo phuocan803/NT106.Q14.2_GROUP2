@@ -21,10 +21,10 @@ namespace Lab03_Bai04_Server
         public Server()
         {
             InitializeComponent();
-            textBox_IP_Address.Text = "127.0.0.1";
-            textBox_Port.Text = "9000";
+            //textBox_IP_Address.Text = "127.0.0.1";
+            //textBox_Port.Text = "9000";
             InitializeMovies();
-            this.Load += Server_Load;
+            //this.Load += Server_Load;
         }
 
         private void Server_Load(object sender, EventArgs e) => button_Listen_Click(null, null);
@@ -39,7 +39,11 @@ namespace Lab03_Bai04_Server
 
         private void button_Listen_Click(object sender, EventArgs e)
         {
-            if (isRunning) { Log("Máy chủ đang chạy."); return; }
+            if (isRunning)
+            {
+                Log("Máy chủ đang chạy."); 
+                return; 
+            }
             try
             {
                 listener = new TcpListener(IPAddress.Parse(textBox_IP_Address.Text.Trim()), int.Parse(textBox_Port.Text.Trim()));
@@ -47,13 +51,19 @@ namespace Lab03_Bai04_Server
                 isRunning = true;
                 Log("Máy chủ đã chạy tại " + textBox_IP_Address.Text + ":" + textBox_Port.Text);
 
-                Thread t = new Thread(AcceptClients) { IsBackground = true };
+                Thread t = new Thread(AcceptClients)
+                {
+                    IsBackground = true
+                };
                 t.Start();
 
                 button_Listen.Enabled = false;
                 button_Stop.Enabled = true;
             }
-            catch (Exception ex) { Log("Lỗi: " + ex.Message); }
+            catch (Exception ex) 
+            { 
+                Log("Lỗi: " + ex.Message); 
+            }
         }
 
         private void button_Stop_Click(object sender, EventArgs e)
@@ -77,24 +87,30 @@ namespace Lab03_Bai04_Server
                 button_Listen.Enabled = true;
                 button_Stop.Enabled = false;
             }
-            catch (Exception ex) { Log("Lỗi khi dừng máy chủ: " + ex.Message); }
+            catch (Exception ex)
+            {
+                Log("Lỗi khi dừng máy chủ: " + ex.Message);
+            }
         }
 
 
         private void AcceptClients()
         {
-            while (isRunning)
+            while(isRunning)
             {
                 try
                 {
                     TcpClient client = listener.AcceptTcpClient();
-                    lock (lockObj) clients.Add(client);
+                    lock(lockObj) clients.Add(client);
                     UpdateClientsList();
                     Log("Khách kết nối: " + client.Client.RemoteEndPoint);
-                    Thread t = new Thread(HandleClient) { IsBackground = true };
+                    Thread t = new Thread(HandleClient)
+                    {
+                        IsBackground = true
+                    };
                     t.Start(client);
                 }
-                catch { }
+                catch{ }
             }
         }
 
@@ -146,7 +162,9 @@ namespace Lab03_Bai04_Server
                 {
                     List<string> failed = new List<string>();
                     foreach (string s in seats)
+                    {
                         if (bookedSeats[movie][room].Contains(s)) failed.Add(s);
+                    }
 
                     if (failed.Count > 0)
                     {
@@ -176,7 +194,10 @@ namespace Lab03_Bai04_Server
             {
                 foreach (var client in clients)
                 {
-                    try { client.GetStream().Write(data, 0, data.Length); }
+                    try 
+                    { 
+                        client.GetStream().Write(data, 0, data.Length); 
+                    }
                     catch { }
                 }
             }
@@ -185,21 +206,35 @@ namespace Lab03_Bai04_Server
         private void SendMessage(TcpClient client, string msg)
         {
             byte[] data = Encoding.UTF8.GetBytes(msg);
-            try { client.GetStream().Write(data, 0, data.Length); }
+            try 
+            { 
+                client.GetStream().Write(data, 0, data.Length); 
+            }
             catch { }
         }
 
         private void Log(string s)
         {
-            if (InvokeRequired) { Invoke(new Action<string>(Log), s); return; }
+            if (InvokeRequired)
+            { 
+                Invoke(new Action<string>(Log), s); 
+                return; 
+            }
             textBox_Logs.AppendText(s + Environment.NewLine);
         }
 
         private void UpdateClientsList()
         {
-            if (InvokeRequired) { Invoke(new Action(UpdateClientsList)); return; }
+            if (InvokeRequired)
+            { 
+                Invoke(new Action(UpdateClientsList));
+                return;
+            }
             listBox_Clients.Items.Clear();
-            foreach (var c in clients) listBox_Clients.Items.Add(c.Client.RemoteEndPoint.ToString());
+            foreach (var c in clients)
+            {
+                listBox_Clients.Items.Add(c.Client.RemoteEndPoint.ToString());
+            }    
         }
     }
 }

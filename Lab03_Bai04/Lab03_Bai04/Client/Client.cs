@@ -22,14 +22,18 @@ namespace Lab03_Bai04
             InitializeComponent();
             this.Load += Bai04_Load;
         }
+        private void Bai04_Load(object sender, EventArgs e)
+        {
+            comboBox_Room.Enabled = false;
+            checkedListBox_Seat.Enabled = false;
+            textBox_FullName.Enabled = false;
+            comboBox_MovieName.Enabled = false;
+        }
 
         void ConnectToServer()
         {
             try
             {
-                if (client != null && client.Connected)
-                    client.Close();
-
                 string ip = textBox_IP_Remote_Host.Text.Trim();
                 int port = int.Parse(textBox_Port.Text.Trim());
 
@@ -128,22 +132,6 @@ namespace Lab03_Bai04
             ns.Write(data, 0, data.Length);
         }
 
-        private void Bai04_Load(object sender, EventArgs e)
-        {
-            comboBox_MovieName.Items.AddRange(new object[]
-            {
-                "Đào, phở và piano",
-                "Mai",
-                "Gặp lại chị bầu",
-                "Tarot"
-            });
-
-            comboBox_Room.Enabled = false;
-            checkedListBox1.Enabled = false;
-            textBox_FullName.Enabled = false;
-            comboBox_MovieName.Enabled = false;
-        }
-
         private void button_Connect_Click(object sender, EventArgs e)
         {
             ConnectToServer();
@@ -155,42 +143,33 @@ namespace Lab03_Bai04
         {
             client.Close();
             comboBox_Room.Enabled = false;
-            checkedListBox1.Enabled = false;
+            checkedListBox_Seat.Enabled = false;
             textBox_FullName.Enabled = false;
             comboBox_MovieName.Enabled = false;
+            MessageBox.Show("Đã ngắt kết nối với Server!");
         }
 
         private void comboBox_MovieName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBox_Room.Enabled = true;
+            comboBox_Room.Enabled = true;   
             comboBox_Room.Items.Clear();
 
-            switch (comboBox_MovieName.SelectedItem.ToString())
-            {
-                case "Đào, phở và piano":
-                    comboBox_Room.Items.AddRange(new object[] { 1, 2, 3 });
-                    break;
-                case "Mai":
-                    comboBox_Room.Items.AddRange(new object[] { 2, 3 });
-                    break;
-                case "Gặp lại chị bầu":
-                    comboBox_Room.Items.Add(1);
-                    break;
-                case "Tarot":
-                    comboBox_Room.Items.Add(3);
-                    break;
-            }
+            string movie = comboBox_MovieName.SelectedItem.ToString();
 
-            checkedListBox1.Items.Clear();
-            checkedListBox1.Enabled = false;
+            if (movie == "Đào, phở và piano")
+                comboBox_Room.Items.AddRange(new object[] { 1, 2, 3 });
+            else if (movie == "Mai")
+                comboBox_Room.Items.AddRange(new object[] { 2, 3 });
+            else if (movie == "Gặp lại chị bầu")
+                comboBox_Room.Items.Add(1);
+            else if (movie == "Tarot")
+                comboBox_Room.Items.Add(3);
         }
+
 
         private void comboBox_Room_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox_Room.SelectedItem == null || comboBox_MovieName.SelectedItem == null)
-                return;
-
-            checkedListBox1.Enabled = true;
+            checkedListBox_Seat.Enabled = true;
 
             // Lấy trạng thái ghế từ Server
             SendMessage($"GET_SEATS|{comboBox_MovieName.SelectedItem}|{comboBox_Room.SelectedItem}");
@@ -198,25 +177,23 @@ namespace Lab03_Bai04
 
         void UpdateCheckedListBox()
         {
-            if (comboBox_MovieName.SelectedItem == null || comboBox_Room.SelectedItem == null) return;
-
             string movie = comboBox_MovieName.SelectedItem.ToString();
             int room = int.Parse(comboBox_Room.SelectedItem.ToString());
 
             string[] allSeats = { "A1", "A2", "A3", "A4", "A5", "B1", "B2", "B3", "B4", "B5", "C1", "C2", "C3", "C4", "C5" };
 
-            checkedListBox1.Items.Clear();
+            checkedListBox_Seat.Items.Clear();
             foreach (var seat in allSeats)
-                checkedListBox1.Items.Add(seat);
+                checkedListBox_Seat.Items.Add(seat);
 
-            // Tích ghế đã đặt
+            // Đánh dấu các ghế đã bị đặt
             if (bookedSeats.ContainsKey(movie) && bookedSeats[movie].ContainsKey(room))
             {
-                foreach (int i in Enumerable.Range(0, checkedListBox1.Items.Count))
+                foreach (int i in Enumerable.Range(0, checkedListBox_Seat.Items.Count))
                 {
-                    string seat = checkedListBox1.Items[i].ToString();
+                    string seat = checkedListBox_Seat.Items[i].ToString();
                     if (bookedSeats[movie][room].Contains(seat))
-                        checkedListBox1.SetItemCheckState(i, CheckState.Indeterminate);
+                        checkedListBox_Seat.SetItemCheckState(i, CheckState.Indeterminate);
                 }
             }
         }
@@ -232,9 +209,9 @@ namespace Lab03_Bai04
             }
 
             List<string> seatsToBook = new List<string>();
-            for (int i = 0; i < checkedListBox1.Items.Count; i++)
-                if (checkedListBox1.GetItemCheckState(i) == CheckState.Checked)
-                    seatsToBook.Add(checkedListBox1.Items[i].ToString());
+            for (int i = 0; i < checkedListBox_Seat.Items.Count; i++)
+                if (checkedListBox_Seat.GetItemCheckState(i) == CheckState.Checked)
+                    seatsToBook.Add(checkedListBox_Seat.Items[i].ToString());
 
             if (seatsToBook.Count == 0)
             {
