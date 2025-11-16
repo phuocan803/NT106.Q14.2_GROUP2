@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Lab03_Bai04/Lab03_Bai04_Client.csproj" Id="1be0de59-6903-45d5-8be5-1ce89e3a6f40" />
+  <Project Path="Lab03_Bai04_Server/Lab03_Bai04_Server.csproj" Id="c2eccdfa-e021-46ce-8059-391d5c011059" />
+</Solution>
