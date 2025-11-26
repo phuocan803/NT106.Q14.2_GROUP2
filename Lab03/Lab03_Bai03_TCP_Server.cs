@@ -56,8 +56,7 @@ namespace Lab03
 
             // ipserver và endpoint
             // string ipServer = GetServerIPAddress();
-            // IPEndPoint ipEpServer = new IPEndPoint(IPAddress.Any, 8080);
-            IPEndPoint ipEpServer = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8080);
+            IPEndPoint ipEpServer = new IPEndPoint(IPAddress.Any, 8080);
             // IPEndPoint ipEpServer = new IPEndPoint(IPAddress.Parse(ipServer), 8080);
             
             // gán socket tới địa chỉ IP và port 8080

@@ -32,11 +32,13 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
             this.btnDisconnect = new System.Windows.Forms.Button();
+            this.txtIPAddress = new System.Windows.Forms.TextBox();
+            this.lblIPAddress = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtMessage
             // 
-            this.txtMessage.Location = new System.Drawing.Point(25, 27);
+            this.txtMessage.Location = new System.Drawing.Point(25, 67);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.Size = new System.Drawing.Size(310, 102);
@@ -72,11 +74,30 @@
             this.btnDisconnect.UseVisualStyleBackColor = true;
             this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
+            // txtIPAddress
+            // 
+            this.txtIPAddress.Location = new System.Drawing.Point(90, 27);
+            this.txtIPAddress.Name = "txtIPAddress";
+            this.txtIPAddress.Size = new System.Drawing.Size(245, 20);
+            this.txtIPAddress.TabIndex = 4;
+            this.txtIPAddress.Text = "127.0.0.1";
+            // 
+            // lblIPAddress
+            // 
+            this.lblIPAddress.AutoSize = true;
+            this.lblIPAddress.Location = new System.Drawing.Point(25, 30);
+            this.lblIPAddress.Name = "lblIPAddress";
+            this.lblIPAddress.Size = new System.Drawing.Size(59, 13);
+            this.lblIPAddress.TabIndex = 5;
+            this.lblIPAddress.Text = "IP Server:";
+            // 
             // Lab03_Bai03_TCP_Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 163);
+            this.ClientSize = new System.Drawing.Size(477, 190);
+            this.Controls.Add(this.lblIPAddress);
+            this.Controls.Add(this.txtIPAddress);
             this.Controls.Add(this.btnDisconnect);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.btnConnect);
@@ -94,5 +115,7 @@
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnDisconnect;
+        private System.Windows.Forms.TextBox txtIPAddress;
+        private System.Windows.Forms.Label lblIPAddress;
     }
 }

@@ -37,7 +37,7 @@ namespace ChatClient
 
             try
             {
-                client = new TcpClient("127.0.0.1", 8080);
+                client = new TcpClient("192.168.137.176", 8080);
                 stream = client.GetStream();
 
                 // Gửi tên người dùng ngay sau khi kết nối
