@@ -291,7 +291,7 @@
             this.btnDeleteAll.TabIndex = 21;
             this.btnDeleteAll.Text = "Xóa dữ liệu";
             this.btnDeleteAll.UseVisualStyleBackColor = false;
-            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            //this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // ClientForm
             // 

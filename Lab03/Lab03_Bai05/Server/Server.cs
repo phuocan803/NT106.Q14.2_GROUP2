@@ -92,13 +92,50 @@ namespace Bai05.Server
             }
         }
 
+
+        private string GetLocalIPAddress()
+        {
+            try
+            {
+                var host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
+                List<string> ips = new List<string>();
+
+                foreach (var ip in host.AddressList)
+                {
+                    string ipStr = ip.ToString();
+
+                    // Chỉ lấy IPv4, bỏ qua 127.x.x.x và 192.168.56.x (VirtualBox)
+                    if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork
+                        && !ipStr.StartsWith("127.")
+                        && !ipStr.StartsWith("192.168.56."))  // ✅ BỎ QUA VIRTUALBOX
+                    {
+                        ips.Add(ipStr);
+                    }
+                }
+
+                return ips.Count > 0 ? string.Join(", ", ips) : "Không tìm thấy IP";
+            }
+            catch { }
+            return "Không tìm thấy IP";
+        }
+
         private void btnStart_Click(object sender, EventArgs e)
         {
             _cts = new CancellationTokenSource();
             _listener = new TcpListener(IPAddress.Any, PORT);
             _listener.Start();
 
-            Log($"🟢 Server lắng nghe tại 127.0.0.1:{PORT}");
+            string allIPs = GetLocalIPAddress();
+
+            Log($"🟢 SERVER ĐANG CHẠY");
+            Log($"📍 Các IP có sẵn:");
+
+            // Tách từng IP ra để dễ đọc
+            foreach (var ip in allIPs.Split(new[] { ", " }, StringSplitOptions.None))
+            {
+                Log($"   • {ip}:{PORT}");
+            }
+
             btnStart.Enabled = false;
             btnStop.Enabled = true;
 

@@ -1,7 +1,5 @@
-﻿using Bai05.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Net.Sockets;
@@ -10,6 +8,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Bai05.Shared;
 
 namespace Bai05
 {
@@ -26,8 +25,8 @@ namespace Bai05
         private NetworkStream _ns;
         private CancellationTokenSource _cts;
 
-        private const string SERVER_IP = "127.0.0.1";
-        private const int SERVER_PORT = 5000;
+        private string _serverIP = "10.45.196.100";
+        private int _serverPort = 5000;
 
         public ClientForm()
         {
@@ -44,29 +43,57 @@ namespace Bai05
 
         private void ClientForm_Load(object sender, EventArgs e)
         {
-            SetupListView();
-            btnConnect_Click(null, null);
-        }
 
-        private void SetupListView()
-        {
-            listViewFoods.View = View.Details;
-            listViewFoods.FullRowSelect = true;
-            listViewFoods.GridLines = true;
-            listViewFoods.Columns.Clear();
-            listViewFoods.Columns.Add("Tên món", 150);
-            listViewFoods.Columns.Add("Người đăng", 120);
-            listViewFoods.Columns.Add("Quyền hạn", 100);
-            listViewFoods.Columns.Add("Ảnh", 180);
         }
-
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
             if (_tcpClient?.Connected == true)
+            {
                 DisconnectFromServer();
+            }
             else
-                ConnectToServer();
+            {
+                // ✅ HIỂN THỊ DIALOG NHẬP IP
+                using (var form = new Form())
+                {
+                    form.Text = "Kết nối Server";
+                    form.Size = new Size(400, 180);
+                    form.StartPosition = FormStartPosition.CenterParent;
+                    form.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    form.MaximizeBox = false;
+                    form.MinimizeBox = false;
+
+                    Label lblIP = new Label() { Left = 20, Top = 20, Text = "IP Server:", Width = 80 };
+                    TextBox txtIP = new TextBox() { Left = 110, Top = 20, Width = 250, Text = _serverIP };
+
+                    Label lblPort = new Label() { Left = 20, Top = 60, Text = "Port:", Width = 80 };
+                    TextBox txtPort = new TextBox() { Left = 110, Top = 60, Width = 250, Text = _serverPort.ToString() };
+
+                    Button btnOK = new Button() { Text = "Kết nối", Left = 150, Width = 100, Top = 100, DialogResult = DialogResult.OK };
+                    Button btnCancel = new Button() { Text = "Hủy", Left = 260, Width = 100, Top = 100, DialogResult = DialogResult.Cancel };
+
+                    form.Controls.Add(lblIP);
+                    form.Controls.Add(txtIP);
+                    form.Controls.Add(lblPort);
+                    form.Controls.Add(txtPort);
+                    form.Controls.Add(btnOK);
+                    form.Controls.Add(btnCancel);
+
+                    form.AcceptButton = btnOK;
+                    form.CancelButton = btnCancel;
+
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        _serverIP = txtIP.Text.Trim();
+                        if (int.TryParse(txtPort.Text.Trim(), out int port))
+                        {
+                            _serverPort = port;
+                        }
+                        ConnectToServer();
+                    }
+                }
+            }
         }
 
         private void btnChooseImage_Click(object sender, EventArgs e)
@@ -83,10 +110,9 @@ namespace Bai05
 
                     try
                     {
-                        using (var fs = new FileStream(_selectedImagePath, FileMode.Open, FileAccess.Read))
-                        using (var img = Image.FromStream(fs))
+                        using (var fs = new FileStream(_selectedImagePath, FileMode.Open))
                         {
-                            pictureBoxPreview.Image = new Bitmap(img);
+                            pictureBoxPreview.Image = new Bitmap(Image.FromStream(fs));
                         }
                     }
                     catch
@@ -174,8 +200,8 @@ namespace Bai05
 
             Random rnd = new Random();
             var food = _myFoods[rnd.Next(_myFoods.Count)];
-            ShowResult(food.ten, food.nguoi, food.hinh, isLocal: true);
-            MessageBox.Show($"Hôm nay ăn: {food.ten}!", "Kết quả");
+            ShowResult(food.ten, food.nguoi, food.hinh);
+            MessageBox.Show($"🎉 Hôm nay ăn: {food.ten}!", "Kết quả");
         }
 
         private void btnRandomCommunity_Click(object sender, EventArgs e)
@@ -188,8 +214,8 @@ namespace Bai05
 
             Random rnd = new Random();
             var food = _communityFoods[rnd.Next(_communityFoods.Count)];
-            ShowResult(food.TenMonAn, food.NguoiDang, food.HinhAnh, isLocal: false);
-            MessageBox.Show($"Hôm nay ăn: {food.TenMonAn}!\nCủa: {food.NguoiDang}", "Kết quả");
+            ShowResult(food.TenMonAn, food.NguoiDang, food.HinhAnh);
+            MessageBox.Show($"🎉 Hôm nay ăn: {food.TenMonAn}!\n👤 Của: {food.NguoiDang}", "Kết quả");
         }
 
         private void DisplayListView(List<(string ten, string nguoi, string quyen, string hinh)> foods)
@@ -221,20 +247,20 @@ namespace Bai05
             try
             {
                 _tcpClient = new TcpClient();
-                _tcpClient.Connect(SERVER_IP, SERVER_PORT);
+                _tcpClient.Connect(_serverIP, _serverPort);  // ✅ Dùng biến thay vì const
                 _ns = _tcpClient.GetStream();
                 _cts = new CancellationTokenSource();
 
-                btnConnect.Text = "Ngắt kết nối";
+                btnConnect.Text = "🔴 Ngắt kết nối";
 
                 _ = Task.Run(() => ReceiveLoopAsync(_cts.Token));
 
-                MessageBox.Show("✅ Kết nối Server thành công!", "Thông báo");
+                MessageBox.Show($"✅ Đã kết nối {_serverIP}:{_serverPort}!", "Thành công");
                 SendRequestAsync("GetFoods");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"❌ Lỗi: {ex.Message}", "Lỗi");
+                MessageBox.Show($"❌ Không thể kết nối!\n{ex.Message}", "Lỗi");
                 _tcpClient = null;
             }
         }
@@ -247,7 +273,7 @@ namespace Bai05
                 _ns?.Close();
                 _tcpClient?.Close();
                 _tcpClient = null;
-                btnConnect.Text = "Kết nối";
+                btnConnect.Text = "🟢 Kết Nối";
                 MessageBox.Show("✅ Đã ngắt kết nối!", "Thông báo");
             }
             catch { }
@@ -358,30 +384,17 @@ namespace Bai05
             catch { }
         }
 
-        private void ShowResult(string ten, string nguoi, string hinh, bool isLocal)
+        private void ShowResult(string ten, string nguoi, string hinh)
         {
-            labelResult.Text = $"{ten} - {nguoi}";
+            labelResult.Text = $"🎉 {ten} - {nguoi}";
 
-            string path = hinh;
-
-            if (isLocal)
-            {
-                if (!string.IsNullOrEmpty(hinh))
-                {
-                    var localPath = Path.Combine(_imageFolder, hinh);
-                    if (File.Exists(localPath))
-                        path = localPath;
-                }
-            }
-
-            if (!string.IsNullOrEmpty(path) && File.Exists(path))
+            if (!string.IsNullOrEmpty(hinh) && File.Exists(hinh))
             {
                 try
                 {
-                    using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read))
-                    using (var img = Image.FromStream(fs))
+                    using (var fs = new FileStream(hinh, FileMode.Open))
                     {
-                        pictureBoxResult.Image = new Bitmap(img);
+                        pictureBoxResult.Image = new Bitmap(Image.FromStream(fs));
                     }
                 }
                 catch
@@ -392,37 +405,6 @@ namespace Bai05
             else
             {
                 pictureBoxResult.Image = null;
-            }
-        }
-        private void btnDeleteAll_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (var conn = new SQLiteConnection($"Data Source={_dbPath};Version=3;"))
-                {
-                    conn.Open();
-                    string sql = "DELETE FROM MonAn; DELETE FROM NguoiDung;";
-                    using (var cmd = new SQLiteCommand(sql, conn))
-                    {
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-
-                foreach (var file in Directory.GetFiles(_imageFolder))
-                {
-                    File.Delete(file);
-                }
-
-                _myFoods.Clear();
-                listViewFoods.Items.Clear();
-                pictureBoxResult.Image = null;
-                labelResult.Text = "";
-
-                MessageBox.Show("✅ Đã xóa toàn bộ dữ liệu local!", "Thành công");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"❌ Lỗi xóa dữ liệu: {ex.Message}", "Lỗi");
             }
         }
 
