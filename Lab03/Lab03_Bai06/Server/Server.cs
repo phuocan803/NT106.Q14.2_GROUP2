@@ -17,14 +17,49 @@ namespace Server
         {
             InitializeComponent();
         }
+        private bool isListening = false;
+        private string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString(); // IPv4
+                }
+            }
+            return "Không tìm thấy IP";
+        }
 
         private void button_Listen_Click(object sender, EventArgs e)
         {
-            listener = new TcpListener(IPAddress.Any, 8080);
-            listener.Start();
-            richTextBox_Log.AppendText("Server started, listening on port 8080...\n");
-            listenThread = new Thread(ListenForClients);
-            listenThread.Start();
+            if (isListening)
+            {
+                MessageBox.Show("Server is already listening on port 8080.");
+                return;
+            }
+
+            try
+            {
+                listener = new TcpListener(IPAddress.Any, 8080);
+                listener.Start();
+                isListening = true;
+                string localIP = GetLocalIPAddress();
+                richTextBox_IPAddress.Text = $"{localIP}";
+                richTextBox_Log.AppendText("Server started, listening on port 8080...\n");
+
+                listenThread = new Thread(ListenForClients);
+                listenThread.IsBackground = true;
+                listenThread.Start();
+            }
+            catch (SocketException ex)
+            {
+                MessageBox.Show($"Không thể khởi động server trên cổng 8080.\nLý do: {ex.Message}", "Lỗi khởi động", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi không xác định: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void ListenForClients()
         {

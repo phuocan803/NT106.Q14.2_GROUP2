@@ -72,5 +72,10 @@ namespace Lab03
                 txtReceivedMessages.AppendText(displayMessage + "\r\n");
             }
         }
+
+        private void txtReceivedMessages_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
