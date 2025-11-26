@@ -38,6 +38,8 @@
             comboBox_Recipients = new ComboBox();
             richTextBox_Message = new RichTextBox();
             listBox_Participants = new ListBox();
+            textBox_IPAddress = new TextBox();
+            label_IPAddress = new Label();
             SuspendLayout();
             // 
             // label_Participants
@@ -51,9 +53,9 @@
             // 
             // textBox_YourName
             // 
-            textBox_YourName.Location = new Point(12, 363);
+            textBox_YourName.Location = new Point(12, 357);
             textBox_YourName.Name = "textBox_YourName";
-            textBox_YourName.Size = new Size(200, 23);
+            textBox_YourName.Size = new Size(226, 23);
             textBox_YourName.TabIndex = 3;
             // 
             // textBox_Message
@@ -66,7 +68,7 @@
             // label_YourName
             // 
             label_YourName.AutoSize = true;
-            label_YourName.Location = new Point(27, 345);
+            label_YourName.Location = new Point(11, 337);
             label_YourName.Name = "label_YourName";
             label_YourName.Size = new Size(63, 15);
             label_YourName.TabIndex = 5;
@@ -75,7 +77,7 @@
             // label_Message
             // 
             label_Message.AutoSize = true;
-            label_Message.Location = new Point(27, 397);
+            label_Message.Location = new Point(14, 397);
             label_Message.Name = "label_Message";
             label_Message.Size = new Size(53, 15);
             label_Message.TabIndex = 6;
@@ -83,7 +85,7 @@
             // 
             // button_Connect
             // 
-            button_Connect.Location = new Point(227, 363);
+            button_Connect.Location = new Point(545, 385);
             button_Connect.Name = "button_Connect";
             button_Connect.Size = new Size(75, 23);
             button_Connect.TabIndex = 7;
@@ -104,9 +106,9 @@
             // comboBox_Recipients
             // 
             comboBox_Recipients.FormattingEnabled = true;
-            comboBox_Recipients.Location = new Point(486, 364);
+            comboBox_Recipients.Location = new Point(244, 357);
             comboBox_Recipients.Name = "comboBox_Recipients";
-            comboBox_Recipients.Size = new Size(121, 23);
+            comboBox_Recipients.Size = new Size(95, 23);
             comboBox_Recipients.TabIndex = 9;
             comboBox_Recipients.SelectedIndexChanged += comboBox_Recipients_SelectedIndexChanged;
             // 
@@ -114,7 +116,7 @@
             // 
             richTextBox_Message.Location = new Point(12, 23);
             richTextBox_Message.Name = "richTextBox_Message";
-            richTextBox_Message.Size = new Size(608, 319);
+            richTextBox_Message.Size = new Size(608, 308);
             richTextBox_Message.TabIndex = 10;
             richTextBox_Message.Text = "";
             richTextBox_Message.TextChanged += richTextBox_Message_TextChanged;
@@ -128,11 +130,31 @@
             listBox_Participants.Size = new Size(144, 394);
             listBox_Participants.TabIndex = 11;
             // 
+            // textBox_IPAddress
+            // 
+            textBox_IPAddress.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox_IPAddress.Location = new Point(467, 355);
+            textBox_IPAddress.Name = "textBox_IPAddress";
+            textBox_IPAddress.Size = new Size(153, 29);
+            textBox_IPAddress.TabIndex = 12;
+            // 
+            // label_IPAddress
+            // 
+            label_IPAddress.AutoSize = true;
+            label_IPAddress.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_IPAddress.Location = new Point(378, 361);
+            label_IPAddress.Name = "label_IPAddress";
+            label_IPAddress.Size = new Size(86, 21);
+            label_IPAddress.TabIndex = 13;
+            label_IPAddress.Text = "Server's IP:";
+            // 
             // Client
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label_IPAddress);
+            Controls.Add(textBox_IPAddress);
             Controls.Add(listBox_Participants);
             Controls.Add(richTextBox_Message);
             Controls.Add(comboBox_Recipients);
@@ -145,11 +167,11 @@
             Controls.Add(label_Participants);
             Name = "Client";
             Text = "Client";
+            FormClosing += Client_FormClosing;
             Load += Client_Load;
             DoubleClick += button_Send_Click;
             ResumeLayout(false);
             PerformLayout();
-            this.FormClosing += Client_FormClosing;
 
         }
 
@@ -164,5 +186,7 @@
         private ComboBox comboBox_Recipients;
         private RichTextBox richTextBox_Message;
         private ListBox listBox_Participants;
+        private TextBox textBox_IPAddress;
+        private Label label_IPAddress;
     }
 }

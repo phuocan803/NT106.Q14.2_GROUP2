@@ -19,6 +19,11 @@ namespace ChatClient
 
         private void button_Send_Click(object sender, EventArgs e)
         {
+            if (stream == null)
+            {
+                MessageBox.Show("Bạn chưa kết nối tới server!");
+                return;
+            }
             string recipient = string.IsNullOrWhiteSpace(comboBox_Recipients.Text) ? "ALL" : comboBox_Recipients.Text;
             string text = textBox_Message.Text;
             if (string.IsNullOrWhiteSpace(text)) return;
@@ -32,12 +37,17 @@ namespace ChatClient
         }
         private void button_Connect_Click(object sender, EventArgs e)
         {
+            string ip = textBox_IPAddress.Text.Trim();
+  
             userName = textBox_YourName.Text;
-            if (string.IsNullOrWhiteSpace(userName)) return;
-
+            if (string.IsNullOrEmpty(ip) || string.IsNullOrWhiteSpace(userName))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ địa chỉ IP và tên người dùng!");
+                return;
+            }
             try
             {
-                client = new TcpClient("127.0.0.1", 8080);
+                client = new TcpClient(ip, 8080);
                 stream = client.GetStream();
 
                 // Gửi tên người dùng ngay sau khi kết nối

@@ -51,6 +51,7 @@
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtLog.Size = new System.Drawing.Size(501, 140);
             this.txtLog.TabIndex = 1;
+            this.txtLog.TextChanged += new System.EventHandler(this.txtLog_TextChanged);
             // 
             // Lab03_Bai02
             // 

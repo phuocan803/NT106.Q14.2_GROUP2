@@ -131,5 +131,10 @@ namespace Lab03
             // không tìm thấy thì trả về ip loopback
             return "127.0.0.1";
         }
+
+        private void txtLog_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

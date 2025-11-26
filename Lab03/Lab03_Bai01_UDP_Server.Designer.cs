@@ -80,6 +80,7 @@ namespace Lab03
             this.txtReceivedMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtReceivedMessages.Size = new System.Drawing.Size(469, 230);
             this.txtReceivedMessages.TabIndex = 4;
+            this.txtReceivedMessages.TextChanged += new System.EventHandler(this.txtReceivedMessages_TextChanged);
             // 
             // Lab03_Bai01_UDP_Server
             // 
