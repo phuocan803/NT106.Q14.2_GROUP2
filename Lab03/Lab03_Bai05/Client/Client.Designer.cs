@@ -45,11 +45,11 @@
             this.btnRandomMyFood = new System.Windows.Forms.Button();
             this.btnRandomCommunity = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.labelResult = new System.Windows.Forms.Label();
             this.pictureBoxResult = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnDeleteAll = new System.Windows.Forms.Button();
+            this.labelResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResult)).BeginInit();
             this.SuspendLayout();
@@ -192,6 +192,7 @@
             this.listViewFoods.TabIndex = 12;
             this.listViewFoods.UseCompatibleStateImageBehavior = false;
             this.listViewFoods.View = System.Windows.Forms.View.Details;
+            this.listViewFoods.SelectedIndexChanged += new System.EventHandler(this.listViewFoods_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -211,7 +212,7 @@
             this.btnRandomMyFood.ForeColor = System.Drawing.Color.White;
             this.btnRandomMyFood.Location = new System.Drawing.Point(831, 392);
             this.btnRandomMyFood.Name = "btnRandomMyFood";
-            this.btnRandomMyFood.Size = new System.Drawing.Size(161, 34);
+            this.btnRandomMyFood.Size = new System.Drawing.Size(209, 34);
             this.btnRandomMyFood.TabIndex = 14;
             this.btnRandomMyFood.Text = "Random của tôi";
             this.btnRandomMyFood.UseVisualStyleBackColor = false;
@@ -224,7 +225,7 @@
             this.btnRandomCommunity.ForeColor = System.Drawing.Color.White;
             this.btnRandomCommunity.Location = new System.Drawing.Point(831, 432);
             this.btnRandomCommunity.Name = "btnRandomCommunity";
-            this.btnRandomCommunity.Size = new System.Drawing.Size(161, 34);
+            this.btnRandomCommunity.Size = new System.Drawing.Size(209, 34);
             this.btnRandomCommunity.TabIndex = 15;
             this.btnRandomCommunity.Text = "Random cộng đồng";
             this.btnRandomCommunity.UseVisualStyleBackColor = false;
@@ -240,14 +241,6 @@
             this.label4.Size = new System.Drawing.Size(63, 20);
             this.label4.TabIndex = 16;
             this.label4.Text = "Kết quả";
-            // 
-            // labelResult
-            // 
-            this.labelResult.AutoSize = true;
-            this.labelResult.Location = new System.Drawing.Point(823, 290);
-            this.labelResult.Name = "labelResult";
-            this.labelResult.Size = new System.Drawing.Size(0, 16);
-            this.labelResult.TabIndex = 17;
             // 
             // pictureBoxResult
             // 
@@ -291,17 +284,25 @@
             this.btnDeleteAll.TabIndex = 21;
             this.btnDeleteAll.Text = "Xóa dữ liệu";
             this.btnDeleteAll.UseVisualStyleBackColor = false;
-            //this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            // 
+            // labelResult
+            // 
+            this.labelResult.AutoSize = true;
+            this.labelResult.BackColor = System.Drawing.Color.White;
+            this.labelResult.Location = new System.Drawing.Point(839, 539);
+            this.labelResult.Name = "labelResult";
+            this.labelResult.Size = new System.Drawing.Size(0, 16);
+            this.labelResult.TabIndex = 22;
             // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1154, 589);
+            this.Controls.Add(this.labelResult);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBoxResult);
-            this.Controls.Add(this.labelResult);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnRandomCommunity);
             this.Controls.Add(this.btnRandomMyFood);
@@ -350,12 +351,11 @@
         private System.Windows.Forms.Button btnRandomMyFood;
         private System.Windows.Forms.Button btnRandomCommunity;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label labelResult;
         private System.Windows.Forms.PictureBox pictureBoxResult;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnDeleteAll;
-
+        private System.Windows.Forms.Label labelResult;
     }
 }
 

@@ -31,7 +31,14 @@ namespace Bai05
         public ClientForm()
         {
             InitializeComponent();
+            listViewFoods.View = View.Details;
+            listViewFoods.FullRowSelect = true;
+            listViewFoods.GridLines = true;
 
+            listViewFoods.Columns.Add("Tên món ăn", 200);
+            listViewFoods.Columns.Add("Người đăng", 150);
+            listViewFoods.Columns.Add("Quyền hạn", 100);
+            listViewFoods.Columns.Add("Hình ảnh", 250);
             _dbPath = Path.Combine(AppContext.BaseDirectory, "food_client.db");
             _imageFolder = Path.Combine(AppContext.BaseDirectory, "ClientImages");
 
@@ -39,6 +46,7 @@ namespace Bai05
                 Directory.CreateDirectory(_imageFolder);
 
             DatabaseHelper.InitializeDatabase(_dbPath);
+
         }
 
         private void ClientForm_Load(object sender, EventArgs e)
@@ -54,7 +62,6 @@ namespace Bai05
             }
             else
             {
-                // ✅ HIỂN THỊ DIALOG NHẬP IP
                 using (var form = new Form())
                 {
                     form.Text = "Kết nối Server";
@@ -169,7 +176,20 @@ namespace Bai05
             try
             {
                 _myFoods.Clear();
-                _myFoods = DatabaseHelper.GetAllFoods(_dbPath);
+                var foodsFromDb = DatabaseHelper.GetAllFoods(_dbPath);
+
+                // ✅ Ghép đường dẫn đầy đủ
+                foreach (var (ten, nguoi, quyen, hinh) in foodsFromDb)
+                {
+                    string fullPath = hinh;
+                    if (!string.IsNullOrEmpty(hinh) && !Path.IsPathRooted(hinh))
+                    {
+                        fullPath = Path.Combine(_imageFolder, hinh);
+                    }
+
+                    _myFoods.Add((ten, nguoi, quyen, fullPath));
+                }
+
                 DisplayListView(_myFoods);
                 MessageBox.Show($"✅ Đã tải {_myFoods.Count} món ăn!", "Thành công");
             }
@@ -388,23 +408,39 @@ namespace Bai05
         {
             labelResult.Text = $"🎉 {ten} - {nguoi}";
 
+            // Debug: Xem đường dẫn
+            System.Diagnostics.Debug.WriteLine($"ShowResult - Đường dẫn: {hinh}");
+            System.Diagnostics.Debug.WriteLine($"ShowResult - File tồn tại: {File.Exists(hinh)}");
+
             if (!string.IsNullOrEmpty(hinh) && File.Exists(hinh))
             {
                 try
                 {
-                    using (var fs = new FileStream(hinh, FileMode.Open))
+                    // ✅ Giải phóng ảnh cũ
+                    if (pictureBoxResult.Image != null)
                     {
-                        pictureBoxResult.Image = new Bitmap(Image.FromStream(fs));
+                        var oldImage = pictureBoxResult.Image;
+                        pictureBoxResult.Image = null;
+                        oldImage.Dispose();
                     }
+
+                    // ✅ Load ảnh mới
+                    using (var fs = new FileStream(hinh, FileMode.Open, FileAccess.Read))
+                    {
+                        pictureBoxResult.Image = Image.FromStream(fs);
+                    }
+
                 }
-                catch
+                catch (Exception ex)
                 {
                     pictureBoxResult.Image = null;
+                    MessageBox.Show($"❌ Lỗi tải ảnh: {ex.Message}\nFile: {hinh}", "Lỗi");
                 }
             }
             else
             {
                 pictureBoxResult.Image = null;
+                MessageBox.Show($"❌ Không tìm thấy file:\n{hinh}\n\nKiểm tra:\n- File có tồn tại không?\n- Đường dẫn có đúng không?", "Lỗi");
             }
         }
 
@@ -414,13 +450,18 @@ namespace Bai05
             _cts?.Dispose();
         }
 
-        private class FoodItem
+        public class FoodItem
         {
             public int IDMA { get; set; }
             public string TenMonAn { get; set; }
             public string NguoiDang { get; set; }
             public string QuyenHan { get; set; }
             public string HinhAnh { get; set; }
+        }
+
+        private void listViewFoods_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

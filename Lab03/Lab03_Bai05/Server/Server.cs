@@ -103,11 +103,9 @@ namespace Bai05.Server
                 foreach (var ip in host.AddressList)
                 {
                     string ipStr = ip.ToString();
-
-                    // Chỉ lấy IPv4, bỏ qua 127.x.x.x và 192.168.56.x (VirtualBox)
                     if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork
                         && !ipStr.StartsWith("127.")
-                        && !ipStr.StartsWith("192.168.56."))  // ✅ BỎ QUA VIRTUALBOX
+                        && !ipStr.StartsWith("192.168.56."))
                     {
                         ips.Add(ipStr);
                     }
@@ -130,7 +128,6 @@ namespace Bai05.Server
             Log($"🟢 SERVER ĐANG CHẠY");
             Log($"📍 Các IP có sẵn:");
 
-            // Tách từng IP ra để dễ đọc
             foreach (var ip in allIPs.Split(new[] { ", " }, StringSplitOptions.None))
             {
                 Log($"   • {ip}:{PORT}");
@@ -268,7 +265,6 @@ namespace Bai05.Server
                     client.GetStream().Write(data, 0, data.Length);
             }
         }
-
         private void Log(string message)
         {
             if (InvokeRequired)
