@@ -34,5 +34,11 @@ namespace Lab03
             Lab03_Bai03_DashBoard form = new Lab03_Bai03_DashBoard();
             form.Show();
         }
+
+        private void Bai_Test_Click(object sender, EventArgs e)
+        {
+            Bai_Test form = new Bai_Test();
+            form.Show();
+        }
     }
 }

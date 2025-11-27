@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bai_Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bai_Test.Designer.cs">
+      <DependentUpon>Bai_Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_DashBoard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Bai_Test.resx">
+      <DependentUpon>Bai_Test.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_DashBoard.resx">
       <DependentUpon>Form_DashBoard.cs</DependentUpon>
     </EmbeddedResource>

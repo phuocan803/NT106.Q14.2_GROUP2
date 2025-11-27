@@ -38,6 +38,7 @@ namespace Lab03
             this.Lab03_Bai02 = new System.Windows.Forms.Button();
             this.Lab03_Bai01 = new System.Windows.Forms.Button();
             this.label_title = new System.Windows.Forms.Label();
+            this.Bai_Test_Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Lab03_Bai06
@@ -114,11 +115,23 @@ namespace Lab03
             this.label_title.TabIndex = 18;
             this.label_title.Text = "NT106 - LAB 03";
             // 
+            // Bai_Test_Button
+            // 
+            this.Bai_Test_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bai_Test_Button.Location = new System.Drawing.Point(333, 303);
+            this.Bai_Test_Button.Name = "Bai_Test_Button";
+            this.Bai_Test_Button.Size = new System.Drawing.Size(120, 40);
+            this.Bai_Test_Button.TabIndex = 25;
+            this.Bai_Test_Button.Text = "Bài Test";
+            this.Bai_Test_Button.UseVisualStyleBackColor = true;
+            this.Bai_Test_Button.Click += new System.EventHandler(this.Bai_Test_Click);
+            // 
             // Form_DashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 453);
+            this.Controls.Add(this.Bai_Test_Button);
             this.Controls.Add(this.Lab03_Bai06);
             this.Controls.Add(this.Lab03_Bai05);
             this.Controls.Add(this.Lab03_Bai04);
@@ -142,6 +155,7 @@ namespace Lab03
         private Button Lab03_Bai02;
         private Button Lab03_Bai01;
         private Label label_title;
+        private Button Bai_Test_Button;
     }
 }
 
