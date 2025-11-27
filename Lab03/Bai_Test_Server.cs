@@ -30,15 +30,21 @@ namespace Lab03
             {
                 string hostName = Dns.GetHostName();
                 IPHostEntry hostEntry = Dns.GetHostEntry(hostName);
+                txtPrivateIP.Text = "";
+                
                 foreach (IPAddress ip in hostEntry.AddressList)
                 {
                     if (ip.AddressFamily == AddressFamily.InterNetwork)
                     {
-                        txtServerIP.Text = ip.ToString();
+                        txtPrivateIP.Text = ip.ToString();
                         break;
                     }
                 }
-                AddLog("Server IP: " + txtServerIP.Text);
+                
+                // Hi?n th? thông tin IP
+                AddLog("Private IP: " + txtPrivateIP.Text);
+                AddLog("Public IP: 34.60.110.222 (GCP External IP)");
+                AddLog("Server s? l?ng nghe trên 0.0.0.0 (t?t c? các interfaces)");
             }
             catch (Exception ex)
             {
@@ -56,7 +62,8 @@ namespace Lab03
                     return;
                 }
 
-                // Kh?i ??ng server
+                // Kh?i ??ng server - L?ng nghe trên 0.0.0.0 (t?t c? interfaces)
+                // ?i?u này cho phép k?t n?i t? c? private IP (10.128.0.2) và public IP (34.60.110.222)
                 this.tcpListener = new TcpListener(IPAddress.Any, port);
                 this.tcpListener.Start();
                 this.isRunning = true;
@@ -66,9 +73,21 @@ namespace Lab03
                 this.listenThread.IsBackground = true;
                 this.listenThread.Start();
 
-                AddLog("Server ?ã kh?i ??ng trên port " + port);
+                AddLog("========================================");
+                AddLog("Server ?ã kh?i ??ng trên 0.0.0.0:" + port);
+                AddLog("Private IP: " + txtPrivateIP.Text + ":" + port);
+                AddLog("Public IP: 34.60.110.222:" + port);
+                AddLog("========================================");
                 AddLog("?ang ch? k?t n?i t? client...");
-                MessageBox.Show("Server ?ã kh?i ??ng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                AddLog("");
+                
+                MessageBox.Show(
+                    "Server ?ã kh?i ??ng thành công!\n\n" +
+                    "K?t n?i t? Internet: 34.60.110.222:" + port + "\n" +
+                    "K?t n?i local/VPC: " + txtPrivateIP.Text + ":" + port,
+                    "Thông báo", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Information);
 
                 // C?p nh?t tr?ng thái controls
                 btnStart.Enabled = false;
@@ -97,7 +116,7 @@ namespace Lab03
                         IPEndPoint clientEndPoint = (IPEndPoint)client.Client.RemoteEndPoint;
                         string clientInfo = clientEndPoint.Address.ToString() + ":" + clientEndPoint.Port;
                         
-                        AddLog("Client ?ã k?t n?i: " + clientInfo);
+                        AddLog(">>> Client ?ã k?t n?i: " + clientInfo);
 
                         // T?o thread ?? x? lý client
                         Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClient));
@@ -138,13 +157,13 @@ namespace Lab03
                     
                     if (message.ToLower() == "quit")
                     {
-                        AddLog("Client ng?t k?t n?i: " + clientInfo);
+                        AddLog("<<< Client ng?t k?t n?i: " + clientInfo);
                         break;
                     }
 
-                    AddLog("T? " + clientInfo + ": " + message);
+                    AddLog("[" + clientInfo + "]: " + message);
 
-                    // G?i ph?n h?i cho client (optional)
+                    // G?i ph?n h?i cho client
                     string response = "Server ?ã nh?n: " + message + "\n";
                     byte[] responseData = Encoding.UTF8.GetBytes(response);
                     ns.Write(responseData, 0, responseData.Length);
@@ -160,7 +179,8 @@ namespace Lab03
                     ns.Close();
                 if (client != null)
                     client.Close();
-                AddLog("?ã ?óng k?t n?i v?i: " + clientInfo);
+                AddLog("--- ?ã ?óng k?t n?i v?i: " + clientInfo);
+                AddLog("");
             }
         }
 
@@ -185,7 +205,9 @@ namespace Lab03
                     listenThread.Join(1000); // ??i t?i ?a 1 giây
                 }
 
+                AddLog("========================================");
                 AddLog("Server ?ã d?ng");
+                AddLog("========================================");
                 MessageBox.Show("Server ?ã d?ng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // C?p nh?t tr?ng thái controls

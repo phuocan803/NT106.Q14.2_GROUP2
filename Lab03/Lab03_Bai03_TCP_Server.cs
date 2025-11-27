@@ -17,115 +17,190 @@ namespace Lab03
     {
         private Socket listenerSocket;
         private Thread serverThread;
+        private bool isRunning = false;
 
         public Lab03_Bai03_TCP_Server()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false; // Allow cross-thread calls for simplicity
         }
 
         private void btnListen_Click(object sender, EventArgs e)
         {
-            // Lấy địa chỉ IP của máy
-            // string ipServer = GetServerIPAddress();
-            // txtLog.AppendText("Server đang lắng nghe trên " + ipServer + ":8080\r\n");
+            // bảo tồn tránh khởi tạo nhiều server
+            if (isRunning || listenerSocket != null)
+            {
+                MessageBox.Show("Server đã đang chạy!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            // lắng nghe trên thread riêng
-            serverThread = new Thread(new ThreadStart(StartServer));
-            //serverThread.IsBackground = true;
+            try
+            {
+                isRunning = true;
 
-            // start luồng để nó trỏ tới StartServer
-            serverThread.Start();
+                // Update UI
+                btnListen.Text = "Listening...";
+                btnListen.Enabled = false;
 
-            //btnListen.Text = "Listening...";
-            //btnListen.Enabled = false;
+                // lắng nghe trên thread riêng
+                serverThread = new Thread(new ThreadStart(StartServer));
+                serverThread.IsBackground = true;
+
+                // start luồng để nó trỏ tới StartServer
+                serverThread.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi khởi động server: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CleanupServer();
+            }
         }
 
         void StartServer()
         {
-            int bytesReceived = 0;
-
-            // khởi tạo mảng byte để nhận dữ liệu
-            byte[] buffer = new byte[1024];
-
-            // tạo socket lắng nghe 
-            listenerSocket = new Socket(
-                AddressFamily.InterNetwork,
-                SocketType.Stream,
-                ProtocolType.Tcp
-            );
-
-            // ipserver và endpoint
-            // string ipServer = GetServerIPAddress();
-            IPEndPoint ipEpServer = new IPEndPoint(IPAddress.Any, 8080);
-            // IPEndPoint ipEpServer = new IPEndPoint(IPAddress.Parse(ipServer), 8080);
-            
-            // gán socket tới địa chỉ IP và port 8080
-            listenerSocket.Bind(ipEpServer);
-
-            // bắt đầu lắng nghe
-            int n = -1; // số kết nối chờ -1 là vô hạn
-            listenerSocket.Listen(n);
-
-            txtLog.AppendText("Server started!\r\n");
-
-            // lặp nhận dữ liệu
-            while (true)
+            try
             {
-                    // Đồng ý kết nối
-                    Socket clientSocket = listenerSocket.Accept();
+                // khởi tạo mảng byte để nhận dữ liệu
+                byte[] buffer = new byte[1024];
 
-                    // Thông báo client đã kết nối
-                    // ref tham chiếu đến clientEP để lấy thông tin client gửi đến
-                    IPEndPoint clientEP = (IPEndPoint)clientSocket.RemoteEndPoint;
+                // tạo socket lắng nghe 
+                listenerSocket = new Socket(
+                    AddressFamily.InterNetwork,
+                    SocketType.Stream,
+                    ProtocolType.Tcp
+                );
 
-                    // hiển thị thông tin kết nối
-                    txtLog.AppendText("Connection accepted from " + clientEP.Address.ToString() + ":" + clientEP.Port + "\r\n");
+                // ipserver và endpoint
+                IPEndPoint ipEpServer = new IPEndPoint(IPAddress.Any, 8080);
+                
+                // gán socket tới địa chỉ IP và port 8080
+                listenerSocket.Bind(ipEpServer);
 
-                    // Nhận dữ liệu từ client
-                    while (clientSocket.Connected)
+                // bắt đầu lắng nghe
+                int backlog = 10; // số kết nối chờ tối đa
+                listenerSocket.Listen(backlog);
+
+                txtLog.AppendText("Server started! Listening on port 8080\r\n");
+
+                // lặp nhận dữ liệu
+                while (isRunning)
+                {
+                    try
+                    {
+                        // Đồng ý kết nối
+                        Socket clientSocket = listenerSocket.Accept();
+
+                        // Thông báo client đã kết nối
+                        IPEndPoint clientEP = (IPEndPoint)clientSocket.RemoteEndPoint;
+
+                        // hiển thị thông tin kết nối
+                        txtLog.AppendText("Connection accepted from " + clientEP.Address.ToString() + ":" + clientEP.Port + "\r\n");
+
+                        // Handle client in separate thread
+                        Thread clientThread = new Thread(() => HandleClient(clientSocket, clientEP));
+                        clientThread.IsBackground = true;
+                        clientThread.Start();
+                    }
+                    catch (SocketException)
+                    {
+                        if (!isRunning)
+                            break;
+                    }
+                }
+            }
+            catch (SocketException ex)
+            {
+                if (isRunning)
+                {
+                    MessageBox.Show("Lỗi socket: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi server: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void HandleClient(Socket clientSocket, IPEndPoint clientEP)
+        {
+            try
+            {
+                byte[] buffer = new byte[1024];
+                int bytesReceived = 0;
+
+                // Nhận dữ liệu từ client
+                while (clientSocket.Connected && isRunning)
+                {
+                    try
                     {
                         // nhận dữ liệu từ client
                         bytesReceived = clientSocket.Receive(buffer);
                         
                         if (bytesReceived == 0)
                         {
-                            break;
+                            break; // Client closed connection
                         }
 
                         // chuyển mảng byte thành chuỗi
                         string message = Encoding.UTF8.GetString(buffer, 0, bytesReceived);
-                        txtLog.AppendText("From client: " + message + "\r\n");
-                    }
 
-                    txtLog.AppendText("Client disconnected\r\n");
+                        // kiểm tra lệnh thoát
+                        if (message.Trim().ToLower() == "quit")
+                        {
+                            txtLog.AppendText("Client " + clientEP.Address.ToString() + ":" + clientEP.Port + " sent quit command\r\n");
+                            break;
+                        }
+
+                        txtLog.AppendText("From " + clientEP.Address.ToString() + ":" + clientEP.Port + " - " + message + "\r\n");
+                    }
+                    catch (SocketException)
+                    {
+                        break;
+                    }
+                }
+
+                txtLog.AppendText("Client disconnected: " + clientEP.Address.ToString() + ":" + clientEP.Port + "\r\n");
+            }
+            catch (Exception ex)
+            {
+                txtLog.AppendText("Lỗi xử lý client: " + ex.Message + "\r\n");
+            }
+            finally
+            {
+                if (clientSocket != null && clientSocket.Connected)
+                {
                     clientSocket.Close();
+                }
             }
         }
 
-        //private string GetServerIPAddress()
-        //{
-        //    // lấy hostname máy hiện tại
-        //    string hostName = Dns.GetHostName();
+        private void CleanupServer()
+        {
+            isRunning = false;
 
-        //    // lấy thông tin ipv4 ipv6 từ hostname lấy được ở trên
-        //    IPHostEntry host = Dns.GetHostEntry(hostName);
+            if (listenerSocket != null)
+            {
+                try
+                {
+                    listenerSocket.Close();
+                }
+                catch { }
+                listenerSocket = null;
+            }
 
-        //    // IPAddress thuộc System.Net
-        //    // IPAddress.AddressFamily là kiểu địa chỉ IP
-        //    // IPAddress.InterNetwork là ipv4 
-        //    // host.AddressList là mảng các địa chỉ IP lấy được từ hostname -> của class IPHostEntry
-        //    // lặp qua các địa chỉ IP để tìm ipv4
-        //    // trả về chuỗi IP đầu tiên mà tìm thấy
-        //    foreach (IPAddress ip in host.AddressList)
-        //    {
-        //        if (ip.AddressFamily == AddressFamily.InterNetwork)
-        //        {
-        //            return ip.ToString();
-        //        }
-        //    }
+            if (serverThread != null && serverThread.IsAlive)
+            {
+                serverThread.Join(1000);
+            }
 
-        //    // không tìm thấy thì trả về ip loopback
-        //    return "127.0.0.1";
-        //}
+            btnListen.Text = "Listen";
+            btnListen.Enabled = true;
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            CleanupServer();
+            base.OnFormClosing(e);
+        }
     }
 }
