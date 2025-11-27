@@ -16,36 +16,84 @@ namespace Lab04
 {
     public partial class Lab04_Bai01 : Form
     {
-        private readonly HttpClient httpClient;
-
         public Lab04_Bai01()
         {
             InitializeComponent();
-            httpClient = new HttpClient();
         }
 
         private void btnGet_Click(object sender, EventArgs e)
         {
-            string result = getHTML(txtUrl.Text);
-            rtbContent.Text = result;
-        }
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtUrl.Text))
+                {
+                    MessageBox.Show("Please enter a URL.", "Validation Error", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtUrl.Focus();
+                    return;
+                }
 
+                string url = txtUrl.Text.Trim();
+                
+                if (!url.StartsWith("http://") && !url.StartsWith("https://"))
+                {
+                    url = "http://" + url;
+                    txtUrl.Text = url;
+                }
+
+                rtbContent.Text = "Loading...\n";
+                
+                string result = getHTML(url);
+                rtbContent.Text = result;
+
+                MessageBox.Show("Content loaded successfully!", "Success", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (WebException webEx)
+            {
+                rtbContent.Text = $"Network Error: {webEx.Message}";
+                MessageBox.Show($"Network error: {webEx.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                rtbContent.Text = $"Error: {ex.Message}";
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private string getHTML(string szUrl)
         {
-            // Create a request for the URL.
-            WebRequest request = WebRequest.Create(szUrl);
-            // Get the response.
-            WebResponse response = request.GetResponse();
-            // Get the stream containing content returned by the server.
-            Stream dataStream = response.GetResponseStream();
-            // Open the stream using a StreamReader for easy access.
-            StreamReader reader = new StreamReader(dataStream);
-            // Read the content.
-            string responseFromServer = reader.ReadToEnd();
-            // Close the response.
-            response.Close();
-            return responseFromServer;
+            WebRequest request = null;
+            WebResponse response = null;
+            Stream dataStream = null;
+            StreamReader reader = null;
+
+            try
+            {
+                request = WebRequest.Create(szUrl);
+                request.Timeout = 30000; 
+                
+                response = request.GetResponse();
+                
+                dataStream = response.GetResponseStream();
+                
+                reader = new StreamReader(dataStream);
+                
+                string responseFromServer = reader.ReadToEnd();
+                
+                return responseFromServer;
+            }
+            finally
+            {
+                if (reader != null)
+                    reader.Close();
+                if (dataStream != null)
+                    dataStream.Close();
+                if (response != null)
+                    response.Close();
+            }
         }
     }
 }

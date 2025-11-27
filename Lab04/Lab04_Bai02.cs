@@ -21,43 +21,92 @@ namespace Lab04
 
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            //string result = getHTML(txtUrl.Text);
-            //rtbContent.Text = result;
-
-            using (WebClient myClient = new WebClient())
+            try
             {
-                //string fileName = "downloaded_content.html";
-                //webClient.DownloadFile(txtUrl.Text, fileName);
+                if (string.IsNullOrWhiteSpace(txtUrl.Text))
+                {
+                    MessageBox.Show("Please enter a URL.", "Validation Error", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtUrl.Focus();
+                    return;
+                }
 
+                if (string.IsNullOrWhiteSpace(txtPath.Text))
+                {
+                    MessageBox.Show("Please enter a save path.", "Validation Error", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtPath.Focus();
+                    return;
+                }
 
-                Stream reponse = myClient.OpenRead(txtUrl.Text);
+                string url = txtUrl.Text.Trim();
+                
+                if (!url.StartsWith("http://") && !url.StartsWith("https://"))
+                {
+                    url = "http://" + url;
+                    txtUrl.Text = url;
+                }
 
-                myClient.DownloadFile(txtUrl.Text, txtPath.Text + "downloaded_content.html");
+                string savePath = txtPath.Text.Trim();
 
-                string result = File.ReadAllText(txtPath.Text + "downloaded_content.html");
+                if (!Directory.Exists(savePath))
+                {
+                    Directory.CreateDirectory(savePath);
+                }
 
+                string fileName = "downloaded_content.html";
+                Uri uri;
+                if (Uri.TryCreate(url, UriKind.Absolute, out uri))
+                {
+                    string pathFileName = Path.GetFileName(uri.LocalPath);
+                    if (!string.IsNullOrEmpty(pathFileName) && pathFileName != "/")
+                    {
+                        fileName = pathFileName;
+                    }
+                    else
+                    {
+                        fileName = uri.Host.Replace(".", "_") + ".html";
+                    }
+                }
+
+                if (!fileName.EndsWith(".html", StringComparison.OrdinalIgnoreCase) && 
+                    !fileName.EndsWith(".htm", StringComparison.OrdinalIgnoreCase))
+                {
+                    fileName += ".html";
+                }
+
+                string fullFilePath = Path.Combine(savePath, fileName);
+
+                rtbContent.Text = "Downloading...\n";
+
+                using (WebClient myClient = new WebClient())
+                {
+                    myClient.DownloadFile(url, fullFilePath);
+                }
+
+                string result = File.ReadAllText(fullFilePath, Encoding.UTF8);
                 rtbContent.Text = result;
 
-                reponse.Close();
+                MessageBox.Show($"File downloaded successfully!\nSaved to: {fullFilePath}", 
+                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
+            catch (WebException webEx)
+            {
+                rtbContent.Text = $"Network Error: {webEx.Message}";
+                MessageBox.Show($"Network error: {webEx.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("Access denied. Please check your permissions for the specified path.", 
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                rtbContent.Text = $"Error: {ex.Message}";
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
-        //private string getHTML(string szUrl)
-        //{
-        //    // Create a request for the URL.
-        //    WebRequest request = WebRequest.Create(szUrl);
-        //    // Get the response.
-        //    WebResponse response = request.GetResponse();
-        //    // Get the stream containing content returned by the server.
-        //    Stream dataStream = response.GetResponseStream();
-        //    // Open the stream using a StreamReader for easy access.
-        //    StreamReader reader = new StreamReader(dataStream);
-        //    // Read the content.
-        //    string responseFromServer = reader.ReadToEnd();
-        //    // Close the response.
-        //    response.Close();
-        //    return responseFromServer;
-        //}
     }
 }
