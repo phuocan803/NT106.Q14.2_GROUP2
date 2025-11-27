@@ -84,7 +84,7 @@ namespace Lab03
             this.txtIPAddress.Name = "txtIPAddress";
             this.txtIPAddress.Size = new System.Drawing.Size(300, 20);
             this.txtIPAddress.TabIndex = 0;
-            this.txtIPAddress.Text = "";
+            this.txtIPAddress.Text = "34.60.110.222";
             // 
             // lblIPAddress
             // 

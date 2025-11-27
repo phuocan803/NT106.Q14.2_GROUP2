@@ -37,7 +37,7 @@ namespace Lab03
 
         private void Bai_Test_Click(object sender, EventArgs e)
         {
-            Bai_Test form = new Bai_Test();
+            Bai_Test_DashBoard form = new Bai_Test_DashBoard();
             form.Show();
         }
     }
