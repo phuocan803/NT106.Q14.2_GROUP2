@@ -31,8 +31,8 @@
             this.label_Title = new System.Windows.Forms.Label();
             this.tabControl_Food_List = new System.Windows.Forms.TabControl();
             this.tabPage_All = new System.Windows.Forms.TabPage();
-            this.tabPage_Contribute = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPage_Contribute = new System.Windows.Forms.TabPage();
             this.button_Choose_Food = new System.Windows.Forms.Button();
             this.button_Add_Food = new System.Windows.Forms.Button();
             this.comboBox_Page_Size = new System.Windows.Forms.ComboBox();
@@ -50,7 +50,7 @@
             this.label_Title.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label_Title.Location = new System.Drawing.Point(162, 9);
             this.label_Title.Name = "label_Title";
-            this.label_Title.Size = new System.Drawing.Size(219, 39);
+            this.label_Title.Size = new System.Drawing.Size(192, 35);
             this.label_Title.TabIndex = 2;
             this.label_Title.Text = "Hôm nay ăn gì?";
             // 
@@ -68,23 +68,13 @@
             // tabPage_All
             // 
             this.tabPage_All.Controls.Add(this.flowLayoutPanel1);
-            this.tabPage_All.Location = new System.Drawing.Point(4, 27);
+            this.tabPage_All.Location = new System.Drawing.Point(4, 24);
             this.tabPage_All.Name = "tabPage_All";
             this.tabPage_All.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_All.Size = new System.Drawing.Size(523, 414);
+            this.tabPage_All.Size = new System.Drawing.Size(523, 417);
             this.tabPage_All.TabIndex = 0;
             this.tabPage_All.Text = "All";
             this.tabPage_All.UseVisualStyleBackColor = true;
-            // 
-            // tabPage_Contribute
-            // 
-            this.tabPage_Contribute.Location = new System.Drawing.Point(4, 27);
-            this.tabPage_Contribute.Name = "tabPage_Contribute";
-            this.tabPage_Contribute.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Contribute.Size = new System.Drawing.Size(523, 414);
-            this.tabPage_Contribute.TabIndex = 1;
-            this.tabPage_Contribute.Text = "Tôi đóng góp";
-            this.tabPage_Contribute.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel1
             // 
@@ -93,9 +83,20 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(517, 408);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(517, 411);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.WrapContents = false;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            // 
+            // tabPage_Contribute
+            // 
+            this.tabPage_Contribute.Location = new System.Drawing.Point(4, 24);
+            this.tabPage_Contribute.Name = "tabPage_Contribute";
+            this.tabPage_Contribute.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_Contribute.Size = new System.Drawing.Size(523, 417);
+            this.tabPage_Contribute.TabIndex = 1;
+            this.tabPage_Contribute.Text = "Tôi đóng góp";
+            this.tabPage_Contribute.UseVisualStyleBackColor = true;
             // 
             // button_Choose_Food
             // 
@@ -131,7 +132,7 @@
             this.label_Page_Size.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Page_Size.Location = new System.Drawing.Point(417, 507);
             this.label_Page_Size.Name = "label_Page_Size";
-            this.label_Page_Size.Size = new System.Drawing.Size(66, 18);
+            this.label_Page_Size.Size = new System.Drawing.Size(61, 17);
             this.label_Page_Size.TabIndex = 7;
             this.label_Page_Size.Text = "Page Size";
             // 
@@ -141,7 +142,7 @@
             this.label_Page.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Page.Location = new System.Drawing.Point(317, 507);
             this.label_Page.Name = "label_Page";
-            this.label_Page.Size = new System.Drawing.Size(38, 18);
+            this.label_Page.Size = new System.Drawing.Size(36, 17);
             this.label_Page.TabIndex = 8;
             this.label_Page.Text = "Page";
             // 

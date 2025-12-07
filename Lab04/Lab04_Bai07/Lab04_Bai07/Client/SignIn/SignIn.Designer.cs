@@ -47,9 +47,10 @@
             this.label_Title.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label_Title.Location = new System.Drawing.Point(115, 9);
             this.label_Title.Name = "label_Title";
-            this.label_Title.Size = new System.Drawing.Size(219, 39);
+            this.label_Title.Size = new System.Drawing.Size(192, 35);
             this.label_Title.TabIndex = 1;
             this.label_Title.Text = "Hôm nay ăn gì?";
+            this.label_Title.Click += new System.EventHandler(this.label_Title_Click);
             // 
             // groupBox1
             // 
@@ -73,7 +74,7 @@
             this.linkLabel_Sign_Up.AutoSize = true;
             this.linkLabel_Sign_Up.Location = new System.Drawing.Point(372, 103);
             this.linkLabel_Sign_Up.Name = "linkLabel_Sign_Up";
-            this.linkLabel_Sign_Up.Size = new System.Drawing.Size(56, 18);
+            this.linkLabel_Sign_Up.Size = new System.Drawing.Size(53, 17);
             this.linkLabel_Sign_Up.TabIndex = 12;
             this.linkLabel_Sign_Up.TabStop = true;
             this.linkLabel_Sign_Up.Text = "Đăng ký";
@@ -84,7 +85,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(242, 103);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 18);
+            this.label1.Size = new System.Drawing.Size(114, 17);
             this.label1.TabIndex = 11;
             this.label1.Text = "Chưa có tài khoản?";
             // 
@@ -96,19 +97,20 @@
             this.button_Sign_In.TabIndex = 10;
             this.button_Sign_In.Text = "Đăng nhập";
             this.button_Sign_In.UseVisualStyleBackColor = true;
+            this.button_Sign_In.Click += new System.EventHandler(this.button_Sign_In_Click);
             // 
             // textBox_Password
             // 
             this.textBox_Password.Location = new System.Drawing.Point(110, 70);
             this.textBox_Password.Name = "textBox_Password";
-            this.textBox_Password.Size = new System.Drawing.Size(317, 26);
+            this.textBox_Password.Size = new System.Drawing.Size(317, 23);
             this.textBox_Password.TabIndex = 9;
             // 
             // textBox_Username
             // 
             this.textBox_Username.Location = new System.Drawing.Point(110, 25);
             this.textBox_Username.Name = "textBox_Username";
-            this.textBox_Username.Size = new System.Drawing.Size(317, 26);
+            this.textBox_Username.Size = new System.Drawing.Size(317, 23);
             this.textBox_Username.TabIndex = 8;
             // 
             // label_Username
@@ -116,7 +118,7 @@
             this.label_Username.AutoSize = true;
             this.label_Username.Location = new System.Drawing.Point(6, 33);
             this.label_Username.Name = "label_Username";
-            this.label_Username.Size = new System.Drawing.Size(90, 18);
+            this.label_Username.Size = new System.Drawing.Size(83, 17);
             this.label_Username.TabIndex = 7;
             this.label_Username.Text = "Tên tài khoản";
             // 
@@ -125,7 +127,7 @@
             this.label_Password.AutoSize = true;
             this.label_Password.Location = new System.Drawing.Point(6, 73);
             this.label_Password.Name = "label_Password";
-            this.label_Password.Size = new System.Drawing.Size(65, 18);
+            this.label_Password.Size = new System.Drawing.Size(62, 17);
             this.label_Password.TabIndex = 6;
             this.label_Password.Text = "Mật khẩu";
             // 

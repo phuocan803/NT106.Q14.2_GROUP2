@@ -30,16 +30,16 @@
         {
             this.label_Title = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label_Food_Name = new System.Windows.Forms.Label();
-            this.textBox_Food_Name = new System.Windows.Forms.TextBox();
-            this.textBox_Price = new System.Windows.Forms.TextBox();
-            this.label_Price = new System.Windows.Forms.Label();
-            this.textBox_Address = new System.Windows.Forms.TextBox();
-            this.label_Address = new System.Windows.Forms.Label();
-            this.textBox_Image = new System.Windows.Forms.TextBox();
-            this.label_Image = new System.Windows.Forms.Label();
-            this.label_Description = new System.Windows.Forms.Label();
             this.textBox_Description = new System.Windows.Forms.TextBox();
+            this.label_Description = new System.Windows.Forms.Label();
+            this.label_Image = new System.Windows.Forms.Label();
+            this.textBox_Image = new System.Windows.Forms.TextBox();
+            this.label_Address = new System.Windows.Forms.Label();
+            this.textBox_Address = new System.Windows.Forms.TextBox();
+            this.label_Price = new System.Windows.Forms.Label();
+            this.textBox_Price = new System.Windows.Forms.TextBox();
+            this.textBox_Food_Name = new System.Windows.Forms.TextBox();
+            this.label_Food_Name = new System.Windows.Forms.Label();
             this.button_Add = new System.Windows.Forms.Button();
             this.button_Clear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -52,7 +52,7 @@
             this.label_Title.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label_Title.Location = new System.Drawing.Point(116, 9);
             this.label_Title.Name = "label_Title";
-            this.label_Title.Size = new System.Drawing.Size(219, 39);
+            this.label_Title.Size = new System.Drawing.Size(192, 35);
             this.label_Title.TabIndex = 3;
             this.label_Title.Text = "Hôm nay ăn gì?";
             // 
@@ -76,79 +76,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thêm món ăn";
             // 
-            // label_Food_Name
-            // 
-            this.label_Food_Name.AutoSize = true;
-            this.label_Food_Name.Location = new System.Drawing.Point(6, 49);
-            this.label_Food_Name.Name = "label_Food_Name";
-            this.label_Food_Name.Size = new System.Drawing.Size(79, 18);
-            this.label_Food_Name.TabIndex = 0;
-            this.label_Food_Name.Text = "Tên món ăn";
-            // 
-            // textBox_Food_Name
-            // 
-            this.textBox_Food_Name.Location = new System.Drawing.Point(139, 46);
-            this.textBox_Food_Name.Name = "textBox_Food_Name";
-            this.textBox_Food_Name.Size = new System.Drawing.Size(278, 26);
-            this.textBox_Food_Name.TabIndex = 1;
-            // 
-            // textBox_Price
-            // 
-            this.textBox_Price.Location = new System.Drawing.Point(139, 78);
-            this.textBox_Price.Name = "textBox_Price";
-            this.textBox_Price.Size = new System.Drawing.Size(278, 26);
-            this.textBox_Price.TabIndex = 2;
-            // 
-            // label_Price
-            // 
-            this.label_Price.AutoSize = true;
-            this.label_Price.Location = new System.Drawing.Point(6, 81);
-            this.label_Price.Name = "label_Price";
-            this.label_Price.Size = new System.Drawing.Size(28, 18);
-            this.label_Price.TabIndex = 3;
-            this.label_Price.Text = "Giá";
-            // 
-            // textBox_Address
-            // 
-            this.textBox_Address.Location = new System.Drawing.Point(139, 110);
-            this.textBox_Address.Name = "textBox_Address";
-            this.textBox_Address.Size = new System.Drawing.Size(278, 26);
-            this.textBox_Address.TabIndex = 4;
-            // 
-            // label_Address
-            // 
-            this.label_Address.AutoSize = true;
-            this.label_Address.Location = new System.Drawing.Point(6, 113);
-            this.label_Address.Name = "label_Address";
-            this.label_Address.Size = new System.Drawing.Size(48, 18);
-            this.label_Address.TabIndex = 5;
-            this.label_Address.Text = "Địa chỉ";
-            // 
-            // textBox_Image
-            // 
-            this.textBox_Image.Location = new System.Drawing.Point(139, 142);
-            this.textBox_Image.Name = "textBox_Image";
-            this.textBox_Image.Size = new System.Drawing.Size(278, 26);
-            this.textBox_Image.TabIndex = 6;
-            // 
-            // label_Image
-            // 
-            this.label_Image.AutoSize = true;
-            this.label_Image.Location = new System.Drawing.Point(6, 145);
-            this.label_Image.Name = "label_Image";
-            this.label_Image.Size = new System.Drawing.Size(62, 18);
-            this.label_Image.TabIndex = 7;
-            this.label_Image.Text = "Hình ảnh";
-            // 
-            // label_Description
-            // 
-            this.label_Description.AutoSize = true;
-            this.label_Description.Location = new System.Drawing.Point(6, 180);
-            this.label_Description.Name = "label_Description";
-            this.label_Description.Size = new System.Drawing.Size(43, 18);
-            this.label_Description.TabIndex = 8;
-            this.label_Description.Text = "Mô tả";
-            // 
             // textBox_Description
             // 
             this.textBox_Description.Location = new System.Drawing.Point(139, 177);
@@ -156,6 +83,81 @@
             this.textBox_Description.Name = "textBox_Description";
             this.textBox_Description.Size = new System.Drawing.Size(278, 134);
             this.textBox_Description.TabIndex = 9;
+            this.textBox_Description.TextChanged += new System.EventHandler(this.textBox_Description_TextChanged);
+            // 
+            // label_Description
+            // 
+            this.label_Description.AutoSize = true;
+            this.label_Description.Location = new System.Drawing.Point(6, 180);
+            this.label_Description.Name = "label_Description";
+            this.label_Description.Size = new System.Drawing.Size(42, 17);
+            this.label_Description.TabIndex = 8;
+            this.label_Description.Text = "Mô tả";
+            // 
+            // label_Image
+            // 
+            this.label_Image.AutoSize = true;
+            this.label_Image.Location = new System.Drawing.Point(6, 145);
+            this.label_Image.Name = "label_Image";
+            this.label_Image.Size = new System.Drawing.Size(58, 17);
+            this.label_Image.TabIndex = 7;
+            this.label_Image.Text = "Hình ảnh";
+            // 
+            // textBox_Image
+            // 
+            this.textBox_Image.Location = new System.Drawing.Point(139, 142);
+            this.textBox_Image.Name = "textBox_Image";
+            this.textBox_Image.Size = new System.Drawing.Size(278, 23);
+            this.textBox_Image.TabIndex = 6;
+            // 
+            // label_Address
+            // 
+            this.label_Address.AutoSize = true;
+            this.label_Address.Location = new System.Drawing.Point(6, 113);
+            this.label_Address.Name = "label_Address";
+            this.label_Address.Size = new System.Drawing.Size(46, 17);
+            this.label_Address.TabIndex = 5;
+            this.label_Address.Text = "Địa chỉ";
+            // 
+            // textBox_Address
+            // 
+            this.textBox_Address.Location = new System.Drawing.Point(139, 110);
+            this.textBox_Address.Name = "textBox_Address";
+            this.textBox_Address.Size = new System.Drawing.Size(278, 23);
+            this.textBox_Address.TabIndex = 4;
+            // 
+            // label_Price
+            // 
+            this.label_Price.AutoSize = true;
+            this.label_Price.Location = new System.Drawing.Point(6, 81);
+            this.label_Price.Name = "label_Price";
+            this.label_Price.Size = new System.Drawing.Size(27, 17);
+            this.label_Price.TabIndex = 3;
+            this.label_Price.Text = "Giá";
+            // 
+            // textBox_Price
+            // 
+            this.textBox_Price.Location = new System.Drawing.Point(139, 78);
+            this.textBox_Price.Name = "textBox_Price";
+            this.textBox_Price.Size = new System.Drawing.Size(278, 23);
+            this.textBox_Price.TabIndex = 2;
+            // 
+            // textBox_Food_Name
+            // 
+            this.textBox_Food_Name.Location = new System.Drawing.Point(139, 46);
+            this.textBox_Food_Name.Name = "textBox_Food_Name";
+            this.textBox_Food_Name.Size = new System.Drawing.Size(278, 23);
+            this.textBox_Food_Name.TabIndex = 1;
+            this.textBox_Food_Name.TextChanged += new System.EventHandler(this.textBox_Food_Name_TextChanged);
+            // 
+            // label_Food_Name
+            // 
+            this.label_Food_Name.AutoSize = true;
+            this.label_Food_Name.Location = new System.Drawing.Point(6, 49);
+            this.label_Food_Name.Name = "label_Food_Name";
+            this.label_Food_Name.Size = new System.Drawing.Size(73, 17);
+            this.label_Food_Name.TabIndex = 0;
+            this.label_Food_Name.Text = "Tên món ăn";
             // 
             // button_Add
             // 
@@ -166,6 +168,7 @@
             this.button_Add.TabIndex = 5;
             this.button_Add.Text = "Thêm";
             this.button_Add.UseVisualStyleBackColor = true;
+            this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // button_Clear
             // 
