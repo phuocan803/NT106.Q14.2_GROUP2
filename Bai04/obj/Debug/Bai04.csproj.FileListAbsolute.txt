@@ -1,0 +1,30 @@
+D:\Tài Nguyên\Lab04\Bai04\bin\Debug\Bai04.exe.config
+D:\Tài Nguyên\Lab04\Bai04\bin\Debug\Bai04.exe
+D:\Tài Nguyên\Lab04\Bai04\bin\Debug\Bai04.pdb
+D:\Tài Nguyên\Lab04\Bai04\bin\Debug\HtmlAgilityPack.NetCore.dll
+D:\Tài Nguyên\Lab04\Bai04\bin\Debug\Newtonsoft.Json.dll
+D:\Tài Nguyên\Lab04\Bai04\bin\Debug\Newtonsoft.Json.xml
+D:\Tài Nguyên\Lab04\Bai04\obj\Debug\Bai04.csproj.AssemblyReference.cache
+D:\Tài Nguyên\Lab04\Bai04\obj\Debug\Bai04.Form1.resources
+D:\Tài Nguyên\Lab04\Bai04\obj\Debug\Bai04.Properties.Resources.resources
+D:\Tài Nguyên\Lab04\Bai04\obj\Debug\Bai04.csproj.GenerateResource.cache
+D:\Tài Nguyên\Lab04\Bai04\obj\Debug\Bai04.csproj.CoreCompileInputs.cache
+D:\Tài Nguyên\Lab04\Bai04\obj\Debug\Bai04.csproj.Up2Date
+D:\Tài Nguyên\Lab04\Bai04\obj\Debug\Bai04.exe
+D:\Tài Nguyên\Lab04\Bai04\obj\Debug\Bai04.pdb
+D:\Tài Nguyên\Lab04\Bai04\obj\Debug\Bai04.exe.config
+C:\Users\FPTShop\Downloads\Lab04\Bai04\bin\Debug\Bai04.exe.config
+C:\Users\FPTShop\Downloads\Lab04\Bai04\bin\Debug\Bai04.exe
+C:\Users\FPTShop\Downloads\Lab04\Bai04\bin\Debug\Bai04.pdb
+C:\Users\FPTShop\Downloads\Lab04\Bai04\bin\Debug\HtmlAgilityPack.NetCore.dll
+C:\Users\FPTShop\Downloads\Lab04\Bai04\bin\Debug\Newtonsoft.Json.dll
+C:\Users\FPTShop\Downloads\Lab04\Bai04\bin\Debug\Newtonsoft.Json.xml
+C:\Users\FPTShop\Downloads\Lab04\Bai04\obj\Debug\Bai04.csproj.AssemblyReference.cache
+C:\Users\FPTShop\Downloads\Lab04\Bai04\obj\Debug\Bai04.exe.config
+C:\Users\FPTShop\Downloads\Lab04\Bai04\obj\Debug\Bai04.Form1.resources
+C:\Users\FPTShop\Downloads\Lab04\Bai04\obj\Debug\Bai04.Properties.Resources.resources
+C:\Users\FPTShop\Downloads\Lab04\Bai04\obj\Debug\Bai04.csproj.GenerateResource.cache
+C:\Users\FPTShop\Downloads\Lab04\Bai04\obj\Debug\Bai04.csproj.CoreCompileInputs.cache
+C:\Users\FPTShop\Downloads\Lab04\Bai04\obj\Debug\Bai04.csproj.Up2Date
+C:\Users\FPTShop\Downloads\Lab04\Bai04\obj\Debug\Bai04.exe
+C:\Users\FPTShop\Downloads\Lab04\Bai04\obj\Debug\Bai04.pdb
