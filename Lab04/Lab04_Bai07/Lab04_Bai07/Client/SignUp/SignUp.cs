@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json.Linq;
 
 namespace Lab04_Bai07.SignUp
 {
@@ -35,6 +36,7 @@ namespace Lab04_Bai07.SignUp
         {
             await RegisterUser();
         }
+
         private async Task RegisterUser()
         {
             string username = textBox_Username.Text;
@@ -44,39 +46,71 @@ namespace Lab04_Bai07.SignUp
             string phone = textBox_Phone.Text;
             string birthday = dateTimePicker_Birthday.Value.ToString("yyyy-MM-dd");
             string language = comboBox_Language.Text;
-            string gender = radioButton_Male.Checked ? "male" : "female";
 
-            var url = "https://nt106.uitiot.vn/auth/signup";
-            using (var client = new HttpClient())
+            int sex = radioButton_Male.Checked ? 1 : 0;
+
+            string firstName = fullName;
+            string lastName = "";
+            int spaceIndex = fullName.LastIndexOf(' ');
+            if (spaceIndex > 0)
             {
-                var content = new MultipartFormDataContent
-        {
-            { new StringContent(username), "username" },
-            { new StringContent(password), "password" },
-            { new StringContent(email), "email" },
-            { new StringContent(fullName), "ho_ten" },
-            { new StringContent(phone), "so_dien_thoai" },
-            { new StringContent(birthday), "ngay_sinh" },
-            { new StringContent(language), "ngon_ngu" },
-            { new StringContent(gender), "gioi_tinh" }
-        };
+                firstName = fullName.Substring(spaceIndex + 1); // Tên
+                lastName = fullName.Substring(0, spaceIndex);   // Họ và đệm
+            }
 
-                var response = await client.PostAsync(url, content);
-                var responseString = await response.Content.ReadAsStringAsync();
+            // Kiểm tra rỗng
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Vui lòng nhập tên tài khoản và mật khẩu.");
+                return;
+            }
 
-                if (response.IsSuccessStatusCode)
+            var url = "https://nt106.uitiot.vn/api/v1/user/signup";
+
+            try
+            {
+                using (var client = new HttpClient())
                 {
-                    MessageBox.Show("Đăng ký thành công!");
-                    var signin = new Lab04_Bai07.SignIn.SignIn();
-                    signin.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Đăng ký thất bại: " + responseString);
+                    var userData = new JObject
+                    {
+                        ["username"] = username,
+                        ["password"] = password,
+                        ["email"] = email,
+                        ["first_name"] = firstName,
+                        ["last_name"] = lastName,
+                        ["phone"] = phone,      
+                        ["birthday"] = birthday,
+                        ["sex"] = sex,          
+                        ["language"] = language  
+                    };
+
+                    // 2. Đóng gói thành StringContent với header application/json
+                    var content = new StringContent(userData.ToString(), Encoding.UTF8, "application/json");
+
+                    // 3. Gửi yêu cầu POST
+                    var response = await client.PostAsync(url, content);
+                    var responseString = await response.Content.ReadAsStringAsync();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Đăng ký thành công!");
+
+                        // Chuyển về màn hình đăng nhập
+                        var signin = new Lab04_Bai07.SignIn.SignIn();
+                        signin.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        // Hiển thị lỗi chi tiết từ server
+                        MessageBox.Show($"Đăng ký thất bại: {responseString}");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi kết nối: " + ex.Message);
+            }
         }
-
     }
 }

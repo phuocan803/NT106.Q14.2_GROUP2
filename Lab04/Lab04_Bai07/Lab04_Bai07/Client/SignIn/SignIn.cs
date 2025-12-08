@@ -1,5 +1,6 @@
 ﻿using Lab04_Bai07.SignUp;
 using System;
+using System.Net;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,51 +22,61 @@ namespace Lab04_Bai07.SignIn
         {
             InitializeComponent();
         }
-
         private void linkLabel_Sign_Up_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var signup = new Lab04_Bai07.SignUp.SignUp();
             signup.Show();
-            this.Close();
+            this.Hide();
         }
-
-        private void label_Title_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private async void button_Sign_In_Click(object sender, EventArgs e)
         {
             string username = textBox_Username.Text;
             string password = textBox_Password.Text;
 
             var url = "https://nt106.uitiot.vn/auth/token";
-            using (var client = new HttpClient())
+
+            try
             {
-                var content = new MultipartFormDataContent
+                using (var client = new HttpClient())
                 {
-                    { new StringContent(username), "username" },
-                    { new StringContent(password), "password" }
-                };
+                    client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0");
 
-                var response = await client.PostAsync(url, content);
-                var responseString = await response.Content.ReadAsStringAsync();
-                var responseObject = JObject.Parse(responseString);
+                    var content = new FormUrlEncodedContent(new[]
+                    {
+                        new KeyValuePair<string, string>("username", username),
+                        new KeyValuePair<string, string>("password", password),
+                        new KeyValuePair<string, string>("grant_type", "password")
+                    });
+                    var response = await client.PostAsync(url, content);
+                    var responseString = await response.Content.ReadAsStringAsync();
 
-                if (!response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Đăng nhập thất bại: " + responseObject["detail"]);
-                    return;
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Đăng nhập thất bại: " + responseString);
+                        return;
+                    }
+
+                    JObject responseObject = JObject.Parse(responseString);
+
+                    // Lưu Token vào Session
+                    Session.TokenType = responseObject["token_type"].ToString();
+                    Session.AccessToken = responseObject["access_token"].ToString();
+                    MessageBox.Show("Đăng nhập thành công!");
+
+                    // Chuyển sang MainMenu
+                    var mainMenu = new Lab04_Bai07.Client.Main_Menu.MainMenu();
+                    mainMenu.Show();
+                    this.Hide();
                 }
-
-                Session.TokenType = responseObject["token_type"].ToString();
-                Session.AccessToken = responseObject["access_token"].ToString();
-
-                MessageBox.Show("Đăng nhập thành công!");
-                var mainMenu = new Lab04_Bai07.Client.Main_Menu.MainMenu();
-                mainMenu.Show();
-                this.Hide();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi kết nối: " + ex.Message);
+            }
+        }
+        private void label_Title_Click(object sender, EventArgs e)
+        {
+            //
         }
     }
 }

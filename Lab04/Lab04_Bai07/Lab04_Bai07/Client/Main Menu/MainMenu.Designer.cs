@@ -31,16 +31,18 @@
             this.label_Title = new System.Windows.Forms.Label();
             this.tabControl_Food_List = new System.Windows.Forms.TabControl();
             this.tabPage_All = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel_All = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage_Contribute = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel_MyFood = new System.Windows.Forms.FlowLayoutPanel();
             this.button_Choose_Food = new System.Windows.Forms.Button();
             this.button_Add_Food = new System.Windows.Forms.Button();
             this.comboBox_Page_Size = new System.Windows.Forms.ComboBox();
             this.label_Page_Size = new System.Windows.Forms.Label();
             this.label_Page = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox_Page = new System.Windows.Forms.ComboBox();
             this.tabControl_Food_List.SuspendLayout();
             this.tabPage_All.SuspendLayout();
+            this.tabPage_Contribute.SuspendLayout();
             this.SuspendLayout();
             // 
             // label_Title
@@ -64,10 +66,11 @@
             this.tabControl_Food_List.SelectedIndex = 0;
             this.tabControl_Food_List.Size = new System.Drawing.Size(531, 445);
             this.tabControl_Food_List.TabIndex = 3;
+            this.tabControl_Food_List.Click += new System.EventHandler(this.tabControl_Food_List_SelectedIndexChanged);
             // 
             // tabPage_All
             // 
-            this.tabPage_All.Controls.Add(this.flowLayoutPanel1);
+            this.tabPage_All.Controls.Add(this.flowLayoutPanel_All);
             this.tabPage_All.Location = new System.Drawing.Point(4, 24);
             this.tabPage_All.Name = "tabPage_All";
             this.tabPage_All.Padding = new System.Windows.Forms.Padding(3);
@@ -76,20 +79,21 @@
             this.tabPage_All.Text = "All";
             this.tabPage_All.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanel_All
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(517, 411);
-            this.flowLayoutPanel1.TabIndex = 0;
-            this.flowLayoutPanel1.WrapContents = false;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            this.flowLayoutPanel_All.AutoScroll = true;
+            this.flowLayoutPanel_All.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel_All.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel_All.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel_All.Name = "flowLayoutPanel_All";
+            this.flowLayoutPanel_All.Size = new System.Drawing.Size(517, 411);
+            this.flowLayoutPanel_All.TabIndex = 0;
+            this.flowLayoutPanel_All.WrapContents = false;
+            this.flowLayoutPanel_All.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel_All_Paint);
             // 
             // tabPage_Contribute
             // 
+            this.tabPage_Contribute.Controls.Add(this.flowLayoutPanel_MyFood);
             this.tabPage_Contribute.Location = new System.Drawing.Point(4, 24);
             this.tabPage_Contribute.Name = "tabPage_Contribute";
             this.tabPage_Contribute.Padding = new System.Windows.Forms.Padding(3);
@@ -97,6 +101,15 @@
             this.tabPage_Contribute.TabIndex = 1;
             this.tabPage_Contribute.Text = "Tôi đóng góp";
             this.tabPage_Contribute.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel_MyFood
+            // 
+            this.flowLayoutPanel_MyFood.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel_MyFood.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel_MyFood.Name = "flowLayoutPanel_MyFood";
+            this.flowLayoutPanel_MyFood.Size = new System.Drawing.Size(517, 411);
+            this.flowLayoutPanel_MyFood.TabIndex = 0;
+            this.flowLayoutPanel_MyFood.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel_MyFood_Paint);
             // 
             // button_Choose_Food
             // 
@@ -107,6 +120,7 @@
             this.button_Choose_Food.TabIndex = 4;
             this.button_Choose_Food.Text = "Ăn gì giờ?";
             this.button_Choose_Food.UseVisualStyleBackColor = true;
+            this.button_Choose_Food.Click += new System.EventHandler(this.button_Choose_Food_Click);
             // 
             // button_Add_Food
             // 
@@ -117,6 +131,7 @@
             this.button_Add_Food.TabIndex = 5;
             this.button_Add_Food.Text = "Thêm món";
             this.button_Add_Food.UseVisualStyleBackColor = true;
+            this.button_Add_Food.Click += new System.EventHandler(this.button_Add_Food_Click);
             // 
             // comboBox_Page_Size
             // 
@@ -125,6 +140,7 @@
             this.comboBox_Page_Size.Name = "comboBox_Page_Size";
             this.comboBox_Page_Size.Size = new System.Drawing.Size(50, 21);
             this.comboBox_Page_Size.TabIndex = 6;
+            this.comboBox_Page_Size.Click += new System.EventHandler(this.comboBox_Page_Size_SelectedIndexChanged);
             // 
             // label_Page_Size
             // 
@@ -146,20 +162,21 @@
             this.label_Page.TabIndex = 8;
             this.label_Page.Text = "Page";
             // 
-            // comboBox2
+            // comboBox_Page
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(361, 507);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(50, 21);
-            this.comboBox2.TabIndex = 9;
+            this.comboBox_Page.FormattingEnabled = true;
+            this.comboBox_Page.Location = new System.Drawing.Point(361, 507);
+            this.comboBox_Page.Name = "comboBox_Page";
+            this.comboBox_Page.Size = new System.Drawing.Size(50, 21);
+            this.comboBox_Page.TabIndex = 9;
+            this.comboBox_Page.Click += new System.EventHandler(this.comboBox_Page_SelectedIndexChanged);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(555, 547);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox_Page);
             this.Controls.Add(this.label_Page);
             this.Controls.Add(this.label_Page_Size);
             this.Controls.Add(this.comboBox_Page_Size);
@@ -171,6 +188,7 @@
             this.Text = "MainMenu";
             this.tabControl_Food_List.ResumeLayout(false);
             this.tabPage_All.ResumeLayout(false);
+            this.tabPage_Contribute.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,12 +200,13 @@
         private System.Windows.Forms.TabControl tabControl_Food_List;
         private System.Windows.Forms.TabPage tabPage_All;
         private System.Windows.Forms.TabPage tabPage_Contribute;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button button_Choose_Food;
         private System.Windows.Forms.Button button_Add_Food;
         private System.Windows.Forms.ComboBox comboBox_Page_Size;
         private System.Windows.Forms.Label label_Page_Size;
         private System.Windows.Forms.Label label_Page;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox_Page;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_All;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_MyFood;
     }
 }

@@ -282,6 +282,7 @@
             this.button_Clear.TabIndex = 4;
             this.button_Clear.Text = "Xóa";
             this.button_Clear.UseVisualStyleBackColor = true;
+            this.button_Clear.Click += new System.EventHandler(this.label1_Click);
             // 
             // label1
             // 
