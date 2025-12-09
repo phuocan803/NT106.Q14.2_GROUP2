@@ -109,6 +109,7 @@
             this.textBox_Image.Name = "textBox_Image";
             this.textBox_Image.Size = new System.Drawing.Size(278, 23);
             this.textBox_Image.TabIndex = 6;
+            this.textBox_Image.TextChanged += new System.EventHandler(this.textBox_Image_TextChanged);
             // 
             // label_Address
             // 
@@ -179,6 +180,7 @@
             this.button_Clear.TabIndex = 6;
             this.button_Clear.Text = "Xóa";
             this.button_Clear.UseVisualStyleBackColor = true;
+            this.button_Clear.Click += new System.EventHandler(this.button_Clear_Click);
             // 
             // AddFood
             // 

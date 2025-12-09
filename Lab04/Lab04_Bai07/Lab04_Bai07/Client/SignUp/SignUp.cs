@@ -112,5 +112,18 @@ namespace Lab04_Bai07.SignUp
                 MessageBox.Show("Lỗi kết nối: " + ex.Message);
             }
         }
+
+        private void button_Clear_Click(object sender, EventArgs e)
+        {
+            textBox_Username.Text = "";
+            textBox_Password.Text = "";
+            textBox_Email.Text = "";
+            textBox_FullName.Text = "";
+            textBox_Phone.Text = "";
+            dateTimePicker_Birthday.Value = DateTime.Now; 
+            comboBox_Language.SelectedIndex = -1; 
+            radioButton_Male.Checked = true;
+            textBox_Username.Focus();
+        }
     }
 }

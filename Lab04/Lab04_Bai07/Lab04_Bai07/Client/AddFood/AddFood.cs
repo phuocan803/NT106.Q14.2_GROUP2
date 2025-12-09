@@ -95,5 +95,21 @@ namespace Lab04_Bai07.Client.AddFood
                 MessageBox.Show("Lỗi ứng dụng: " + ex.Message);
             }
         }
+
+        private void button_Clear_Click(object sender, EventArgs e)
+        {
+            textBox_Food_Name.Text = "";
+            textBox_Price.Text = "";
+            textBox_Address.Text = "";
+            textBox_Image.Text = "";
+            textBox_Description.Text = "";
+
+            textBox_Food_Name.Focus();
+        }
+
+        private void textBox_Image_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -6,7 +6,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Lab04_Bai07.Client.Main_Menu
 {
@@ -185,21 +184,21 @@ namespace Lab04_Bai07.Client.Main_Menu
                 lblDesc.AutoSize = true;
                 lblDesc.MaximumSize = new Size(pnl.Width - leftMargin - 10, 0); // Tự xuống dòng
 
-                // 4. NÚT XÓA (TAB TÔI ĐÓNG GÓP) HOẶC NGƯỜI ĐĂNG (TAB CỘNG ĐỒNG)
+                // 4. Cáu hình UI = code 
+                // Xóa
                 if (isMyFood)
                 {
-                    //Button btnDel = new Button();
-                    //btnDel.Text = "Xóa";
-                    //btnDel.BackColor = Color.IndianRed;
-                    //btnDel.ForeColor = Color.White;
-                    //btnDel.FlatStyle = FlatStyle.Flat;
-                    //btnDel.FlatAppearance.BorderSize = 0;
-                    //btnDel.Size = new Size(60, 30);
-                    // Neo góc phải trên
-                    //btnDel.Location = new Point(pnl.Width - 70, 10);
-                    //btnDel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-                    //btnDel.Click += async (s, e) => { await DeleteFood(food["id"].ToString()); };
-                    //pnl.Controls.Add(btnDel);
+                    Button btnDel = new Button();
+                    btnDel.Text = "Xóa";
+                    btnDel.BackColor = Color.IndianRed;
+                    btnDel.ForeColor = Color.White;
+                    btnDel.FlatStyle = FlatStyle.Flat;
+                    btnDel.FlatAppearance.BorderSize = 0;
+                    btnDel.Size = new Size(60, 30);
+                    btnDel.Location = new Point(pnl.Width - 70, 10);
+                    btnDel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+                    btnDel.Click += async (s, e) => { await DeleteFood(food["id"].ToString()); };
+                    pnl.Controls.Add(btnDel);
                 }
                 else
                 {
@@ -309,31 +308,74 @@ namespace Lab04_Bai07.Client.Main_Menu
 
         private async void button_Choose_Food_Click(object sender, EventArgs e)
         {
-            // api random
-            string url = "https://nt106.uitiot.vn/api/v1/monan/all";
+            var url = isMyFood
+        ? "https://nt106.uitiot.vn/api/v1/monan/my-dishes"
+        : "https://nt106.uitiot.vn/api/v1/monan/all";
 
             try
             {
                 using (var client = new HttpClient())
                 {
-                    client.DefaultRequestHeaders.Authorization =  new AuthenticationHeaderValue(Session.TokenType, Session.AccessToken);
+                    // Token xác thực
+                    client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue(Session.TokenType, Session.AccessToken);
 
-                    var response = await client.GetAsync(url);
+                    // Lấy 1000 món để đảm bảo random đa dạng
+                    var body = new JObject
+                    {
+                        ["current"] = 1,
+                        ["pageSize"] = 1000
+                    };
+                    var content = new StringContent(body.ToString(), Encoding.UTF8, "application/json");
+
+                    // 3. Gọi API 
+                    var response = await client.PostAsync(url, content);
+
                     if (response.IsSuccessStatusCode)
                     {
-                        var json = JObject.Parse(await response.Content.ReadAsStringAsync());
-                        string msg = $"GỢI Ý MÓN ĂN:\n\n" +
-                                     $"{json["ten_mon_an"]}\n" +
-                                     $"{json["dia_chi"]}";
-                        MessageBox.Show(msg, "Ăn gì giờ?", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        var responseString = await response.Content.ReadAsStringAsync();
+                        var jsonResponse = JObject.Parse(responseString);
+                        var data = jsonResponse["data"] as JArray; // Lấy mảng món ăn
+
+                        // Kiểm tra dữ liệu và Random
+                        if (data != null && data.Count > 0)
+                        {
+                            // Chọn số ngẫu nhiên
+                            Random rnd = new Random();
+                            int index = rnd.Next(data.Count);
+                            var randomFood = data[index];
+
+                            // Xử lý giá tiền
+                            double gia = 0;
+                            double.TryParse(randomFood["gia"].ToString(), out gia);
+                            string giaStr = string.Format("{0:N0} VNĐ", gia);
+
+                            string msg = $"{(isMyFood ? "MÓN CỦA BẠN:" : "HÔM NAY ĂN GÌ?")}\n\n" +
+                                         $"{randomFood["ten_mon_an"]}\n" +
+                                         $"{giaStr}\n" +
+                                         $"{randomFood["dia_chi"]}\n\n" +
+                                         $"{randomFood["mo_ta"]}";
+
+                            MessageBox.Show(msg, "Kết quả Random", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            string err = isMyFood
+                                ? "Bạn chưa đóng góp món ăn nào để random."
+                                : "Danh sách cộng đồng đang trống.";
+                            MessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Không tìm thấy món nào!");
+                        MessageBox.Show("Lỗi khi tải dữ liệu để random.");
                     }
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
         }
 
         private void flowLayoutPanel_All_Paint(object sender, PaintEventArgs e) 
