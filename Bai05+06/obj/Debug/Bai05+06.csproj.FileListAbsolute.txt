@@ -1,0 +1,28 @@
+D:\Tài Nguyên\Lab04\Bai05+06\obj\Debug\Bai05+06.csproj.AssemblyReference.cache
+D:\Tài Nguyên\Lab04\Bai05+06\obj\Debug\Bai05_06.Bai05_06.resources
+D:\Tài Nguyên\Lab04\Bai05+06\obj\Debug\Bai05_06.Properties.Resources.resources
+D:\Tài Nguyên\Lab04\Bai05+06\obj\Debug\Bai05+06.csproj.GenerateResource.cache
+D:\Tài Nguyên\Lab04\Bai05+06\obj\Debug\Bai05+06.csproj.CoreCompileInputs.cache
+D:\Tài Nguyên\Lab04\Bai05+06\bin\Debug\Bai05+06.exe.config
+D:\Tài Nguyên\Lab04\Bai05+06\bin\Debug\Bai05+06.exe
+D:\Tài Nguyên\Lab04\Bai05+06\bin\Debug\Bai05+06.pdb
+D:\Tài Nguyên\Lab04\Bai05+06\bin\Debug\Newtonsoft.Json.dll
+D:\Tài Nguyên\Lab04\Bai05+06\bin\Debug\Newtonsoft.Json.xml
+D:\Tài Nguyên\Lab04\Bai05+06\obj\Debug\Bai05+06.csproj.Up2Date
+D:\Tài Nguyên\Lab04\Bai05+06\obj\Debug\Bai05+06.exe
+D:\Tài Nguyên\Lab04\Bai05+06\obj\Debug\Bai05+06.pdb
+D:\Tài Nguyên\Lab04\Bai05+06\obj\Debug\Bai05+06.exe.config
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\bin\Debug\Bai05+06.exe.config
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\bin\Debug\Bai05+06.exe
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\bin\Debug\Bai05+06.pdb
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\bin\Debug\Newtonsoft.Json.dll
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\bin\Debug\Newtonsoft.Json.xml
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\obj\Debug\Bai05+06.csproj.AssemblyReference.cache
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\obj\Debug\Bai05+06.exe.config
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\obj\Debug\Bai05_06.Bai05_06.resources
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\obj\Debug\Bai05_06.Properties.Resources.resources
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\obj\Debug\Bai05+06.csproj.GenerateResource.cache
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\obj\Debug\Bai05+06.csproj.CoreCompileInputs.cache
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\obj\Debug\Bai05+06.csproj.Up2Date
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\obj\Debug\Bai05+06.exe
+C:\Users\FPTShop\Downloads\Lab04\Bai05+06\obj\Debug\Bai05+06.pdb

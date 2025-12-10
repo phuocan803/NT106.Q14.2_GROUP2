@@ -1,0 +1,3 @@
+[01/12/2025 14:53:12] Khách: Chiêu Ân | Phim: Anh Trai Say Xe | Số vé: 2 | Tổng: 160,000 VNĐ
+[06/12/2025 23:54:55] Khách: Chiêu Ân | Phim: Hoàng Tử Quỷ | Số vé: 1 | Tổng: 80,000 VNĐ
+[08/12/2025 15:49:29] Khách: Nguyễn Chiêu Ân | Phim: Phi Vụ Động Trời 2 | Số vé: 1 | Tổng: 80,000 VNĐ
