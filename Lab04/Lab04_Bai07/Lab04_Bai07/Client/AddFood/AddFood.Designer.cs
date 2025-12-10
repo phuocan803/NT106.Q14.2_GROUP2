@@ -52,7 +52,7 @@
             this.label_Title.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label_Title.Location = new System.Drawing.Point(116, 9);
             this.label_Title.Name = "label_Title";
-            this.label_Title.Size = new System.Drawing.Size(192, 35);
+            this.label_Title.Size = new System.Drawing.Size(219, 39);
             this.label_Title.TabIndex = 3;
             this.label_Title.Text = "Hôm nay ăn gì?";
             // 
@@ -90,7 +90,7 @@
             this.label_Description.AutoSize = true;
             this.label_Description.Location = new System.Drawing.Point(6, 180);
             this.label_Description.Name = "label_Description";
-            this.label_Description.Size = new System.Drawing.Size(42, 17);
+            this.label_Description.Size = new System.Drawing.Size(43, 18);
             this.label_Description.TabIndex = 8;
             this.label_Description.Text = "Mô tả";
             // 
@@ -99,15 +99,15 @@
             this.label_Image.AutoSize = true;
             this.label_Image.Location = new System.Drawing.Point(6, 145);
             this.label_Image.Name = "label_Image";
-            this.label_Image.Size = new System.Drawing.Size(58, 17);
+            this.label_Image.Size = new System.Drawing.Size(98, 18);
             this.label_Image.TabIndex = 7;
-            this.label_Image.Text = "Hình ảnh";
+            this.label_Image.Text = "Hình ảnh (URL)";
             // 
             // textBox_Image
             // 
             this.textBox_Image.Location = new System.Drawing.Point(139, 142);
             this.textBox_Image.Name = "textBox_Image";
-            this.textBox_Image.Size = new System.Drawing.Size(278, 23);
+            this.textBox_Image.Size = new System.Drawing.Size(278, 26);
             this.textBox_Image.TabIndex = 6;
             this.textBox_Image.TextChanged += new System.EventHandler(this.textBox_Image_TextChanged);
             // 
@@ -116,7 +116,7 @@
             this.label_Address.AutoSize = true;
             this.label_Address.Location = new System.Drawing.Point(6, 113);
             this.label_Address.Name = "label_Address";
-            this.label_Address.Size = new System.Drawing.Size(46, 17);
+            this.label_Address.Size = new System.Drawing.Size(48, 18);
             this.label_Address.TabIndex = 5;
             this.label_Address.Text = "Địa chỉ";
             // 
@@ -124,7 +124,7 @@
             // 
             this.textBox_Address.Location = new System.Drawing.Point(139, 110);
             this.textBox_Address.Name = "textBox_Address";
-            this.textBox_Address.Size = new System.Drawing.Size(278, 23);
+            this.textBox_Address.Size = new System.Drawing.Size(278, 26);
             this.textBox_Address.TabIndex = 4;
             // 
             // label_Price
@@ -132,7 +132,7 @@
             this.label_Price.AutoSize = true;
             this.label_Price.Location = new System.Drawing.Point(6, 81);
             this.label_Price.Name = "label_Price";
-            this.label_Price.Size = new System.Drawing.Size(27, 17);
+            this.label_Price.Size = new System.Drawing.Size(28, 18);
             this.label_Price.TabIndex = 3;
             this.label_Price.Text = "Giá";
             // 
@@ -140,14 +140,14 @@
             // 
             this.textBox_Price.Location = new System.Drawing.Point(139, 78);
             this.textBox_Price.Name = "textBox_Price";
-            this.textBox_Price.Size = new System.Drawing.Size(278, 23);
+            this.textBox_Price.Size = new System.Drawing.Size(278, 26);
             this.textBox_Price.TabIndex = 2;
             // 
             // textBox_Food_Name
             // 
             this.textBox_Food_Name.Location = new System.Drawing.Point(139, 46);
             this.textBox_Food_Name.Name = "textBox_Food_Name";
-            this.textBox_Food_Name.Size = new System.Drawing.Size(278, 23);
+            this.textBox_Food_Name.Size = new System.Drawing.Size(278, 26);
             this.textBox_Food_Name.TabIndex = 1;
             this.textBox_Food_Name.TextChanged += new System.EventHandler(this.textBox_Food_Name_TextChanged);
             // 
@@ -156,7 +156,7 @@
             this.label_Food_Name.AutoSize = true;
             this.label_Food_Name.Location = new System.Drawing.Point(6, 49);
             this.label_Food_Name.Name = "label_Food_Name";
-            this.label_Food_Name.Size = new System.Drawing.Size(73, 17);
+            this.label_Food_Name.Size = new System.Drawing.Size(79, 18);
             this.label_Food_Name.TabIndex = 0;
             this.label_Food_Name.Text = "Tên món ăn";
             // 
@@ -192,7 +192,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label_Title);
             this.Name = "AddFood";
-            this.Text = "AddFood";
+            this.Text = "Thêm món ăn";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

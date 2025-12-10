@@ -65,7 +65,7 @@
             this.label_Title.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label_Title.Location = new System.Drawing.Point(118, 18);
             this.label_Title.Name = "label_Title";
-            this.label_Title.Size = new System.Drawing.Size(192, 35);
+            this.label_Title.Size = new System.Drawing.Size(219, 39);
             this.label_Title.TabIndex = 0;
             this.label_Title.Text = "Hôm nay ăn gì?";
             // 
@@ -87,14 +87,14 @@
             // 
             this.textBox_Password.Location = new System.Drawing.Point(142, 80);
             this.textBox_Password.Name = "textBox_Password";
-            this.textBox_Password.Size = new System.Drawing.Size(276, 26);
+            this.textBox_Password.Size = new System.Drawing.Size(276, 28);
             this.textBox_Password.TabIndex = 5;
             // 
             // textBox_Username
             // 
             this.textBox_Username.Location = new System.Drawing.Point(142, 35);
             this.textBox_Username.Name = "textBox_Username";
-            this.textBox_Username.Size = new System.Drawing.Size(276, 26);
+            this.textBox_Username.Size = new System.Drawing.Size(276, 28);
             this.textBox_Username.TabIndex = 4;
             // 
             // label_Username
@@ -102,7 +102,7 @@
             this.label_Username.AutoSize = true;
             this.label_Username.Location = new System.Drawing.Point(19, 38);
             this.label_Username.Name = "label_Username";
-            this.label_Username.Size = new System.Drawing.Size(90, 18);
+            this.label_Username.Size = new System.Drawing.Size(102, 21);
             this.label_Username.TabIndex = 3;
             this.label_Username.Text = "Tên tài khoản";
             // 
@@ -111,7 +111,7 @@
             this.label_Password.AutoSize = true;
             this.label_Password.Location = new System.Drawing.Point(19, 83);
             this.label_Password.Name = "label_Password";
-            this.label_Password.Size = new System.Drawing.Size(65, 18);
+            this.label_Password.Size = new System.Drawing.Size(77, 21);
             this.label_Password.TabIndex = 2;
             this.label_Password.Text = "Mật khẩu";
             // 
@@ -142,7 +142,7 @@
             this.label_Gender.AutoSize = true;
             this.label_Gender.Location = new System.Drawing.Point(19, 289);
             this.label_Gender.Name = "label_Gender";
-            this.label_Gender.Size = new System.Drawing.Size(65, 19);
+            this.label_Gender.Size = new System.Drawing.Size(76, 23);
             this.label_Gender.TabIndex = 17;
             this.label_Gender.Text = "Giới tính";
             // 
@@ -160,7 +160,7 @@
             this.radioButton_Female.AutoSize = true;
             this.radioButton_Female.Location = new System.Drawing.Point(158, 3);
             this.radioButton_Female.Name = "radioButton_Female";
-            this.radioButton_Female.Size = new System.Drawing.Size(47, 23);
+            this.radioButton_Female.Size = new System.Drawing.Size(51, 27);
             this.radioButton_Female.TabIndex = 16;
             this.radioButton_Female.TabStop = true;
             this.radioButton_Female.Text = "Nữ";
@@ -171,7 +171,7 @@
             this.radioButton_Male.AutoSize = true;
             this.radioButton_Male.Location = new System.Drawing.Point(6, 3);
             this.radioButton_Male.Name = "radioButton_Male";
-            this.radioButton_Male.Size = new System.Drawing.Size(57, 23);
+            this.radioButton_Male.Size = new System.Drawing.Size(64, 27);
             this.radioButton_Male.TabIndex = 15;
             this.radioButton_Male.TabStop = true;
             this.radioButton_Male.Text = "Nam";
@@ -185,7 +185,7 @@
             "Tiếng Anh"});
             this.comboBox_Language.Location = new System.Drawing.Point(136, 241);
             this.comboBox_Language.Name = "comboBox_Language";
-            this.comboBox_Language.Size = new System.Drawing.Size(282, 27);
+            this.comboBox_Language.Size = new System.Drawing.Size(282, 30);
             this.comboBox_Language.TabIndex = 14;
             // 
             // label_Language
@@ -193,7 +193,7 @@
             this.label_Language.AutoSize = true;
             this.label_Language.Location = new System.Drawing.Point(19, 244);
             this.label_Language.Name = "label_Language";
-            this.label_Language.Size = new System.Drawing.Size(73, 19);
+            this.label_Language.Size = new System.Drawing.Size(85, 23);
             this.label_Language.TabIndex = 13;
             this.label_Language.Text = "Ngôn ngữ";
             // 
@@ -202,7 +202,7 @@
             this.dateTimePicker_Birthday.Location = new System.Drawing.Point(136, 193);
             this.dateTimePicker_Birthday.Name = "dateTimePicker_Birthday";
             this.dateTimePicker_Birthday.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dateTimePicker_Birthday.Size = new System.Drawing.Size(282, 27);
+            this.dateTimePicker_Birthday.Size = new System.Drawing.Size(282, 29);
             this.dateTimePicker_Birthday.TabIndex = 12;
             // 
             // label_Birthday
@@ -210,16 +210,16 @@
             this.label_Birthday.AutoSize = true;
             this.label_Birthday.Location = new System.Drawing.Point(19, 198);
             this.label_Birthday.Name = "label_Birthday";
-            this.label_Birthday.Size = new System.Drawing.Size(69, 19);
+            this.label_Birthday.Size = new System.Drawing.Size(85, 23);
             this.label_Birthday.TabIndex = 11;
-            this.label_Birthday.Text = "Sinh nhật";
+            this.label_Birthday.Text = "Ngày sinh";
             // 
             // label_Phone_Number
             // 
             this.label_Phone_Number.AutoSize = true;
             this.label_Phone_Number.Location = new System.Drawing.Point(19, 146);
             this.label_Phone_Number.Name = "label_Phone_Number";
-            this.label_Phone_Number.Size = new System.Drawing.Size(94, 19);
+            this.label_Phone_Number.Size = new System.Drawing.Size(109, 23);
             this.label_Phone_Number.TabIndex = 10;
             this.label_Phone_Number.Text = "Số điện thoại";
             // 
@@ -227,14 +227,14 @@
             // 
             this.textBox_Phone.Location = new System.Drawing.Point(136, 143);
             this.textBox_Phone.Name = "textBox_Phone";
-            this.textBox_Phone.Size = new System.Drawing.Size(282, 27);
+            this.textBox_Phone.Size = new System.Drawing.Size(282, 29);
             this.textBox_Phone.TabIndex = 9;
             // 
             // textBox_FullName
             // 
             this.textBox_FullName.Location = new System.Drawing.Point(136, 89);
             this.textBox_FullName.Name = "textBox_FullName";
-            this.textBox_FullName.Size = new System.Drawing.Size(282, 27);
+            this.textBox_FullName.Size = new System.Drawing.Size(282, 29);
             this.textBox_FullName.TabIndex = 8;
             // 
             // label_Fullname
@@ -242,7 +242,7 @@
             this.label_Fullname.AutoSize = true;
             this.label_Fullname.Location = new System.Drawing.Point(19, 92);
             this.label_Fullname.Name = "label_Fullname";
-            this.label_Fullname.Size = new System.Drawing.Size(71, 19);
+            this.label_Fullname.Size = new System.Drawing.Size(83, 23);
             this.label_Fullname.TabIndex = 7;
             this.label_Fullname.Text = "Họ và tên";
             // 
@@ -250,7 +250,7 @@
             // 
             this.textBox_Email.Location = new System.Drawing.Point(136, 40);
             this.textBox_Email.Name = "textBox_Email";
-            this.textBox_Email.Size = new System.Drawing.Size(282, 27);
+            this.textBox_Email.Size = new System.Drawing.Size(282, 29);
             this.textBox_Email.TabIndex = 6;
             // 
             // label_Email
@@ -258,7 +258,7 @@
             this.label_Email.AutoSize = true;
             this.label_Email.Location = new System.Drawing.Point(19, 43);
             this.label_Email.Name = "label_Email";
-            this.label_Email.Size = new System.Drawing.Size(45, 19);
+            this.label_Email.Size = new System.Drawing.Size(51, 23);
             this.label_Email.TabIndex = 0;
             this.label_Email.Text = "Email";
             // 
@@ -290,7 +290,7 @@
             this.label1.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(8, 526);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 17);
+            this.label1.Size = new System.Drawing.Size(108, 18);
             this.label1.TabIndex = 5;
             this.label1.Text = "Đã có tài khoản?";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -301,7 +301,7 @@
             this.linkLabel_Sign_In.Font = new System.Drawing.Font("Calibri", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel_Sign_In.Location = new System.Drawing.Point(122, 526);
             this.linkLabel_Sign_In.Name = "linkLabel_Sign_In";
-            this.linkLabel_Sign_In.Size = new System.Drawing.Size(69, 17);
+            this.linkLabel_Sign_In.Size = new System.Drawing.Size(73, 18);
             this.linkLabel_Sign_In.TabIndex = 6;
             this.linkLabel_Sign_In.TabStop = true;
             this.linkLabel_Sign_In.Text = "Đăng nhập";
@@ -320,7 +320,7 @@
             this.Controls.Add(this.groupBox_Sign_Up);
             this.Controls.Add(this.label_Title);
             this.Name = "SignUp";
-            this.Text = "Hôm nay ăn gì? - Đăng ký";
+            this.Text = "Hôm nay ăn gì? - Sign Up";
             this.groupBox_Sign_Up.ResumeLayout(false);
             this.groupBox_Sign_Up.PerformLayout();
             this.groupBox_UserInformation.ResumeLayout(false);
